@@ -1,0 +1,77 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/device/device",
+			"style": {
+				"navigationBarTitleText": "设备"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path" : "pages/sleep-page/sleep_state_index/sleep_state_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "睡眠状态",
+				"enablePullDownRefresh" : true
+			}
+		},
+		{
+			"path" : "pages/sleep-page/sleep_state/sleep_state",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rate_index/heart_rate_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#b7d1fa",
+		"list": [
+			{
+				"text": "首页",
+				"iconPath": "static/tarBarIcon/home.png",
+				"selectedIconPath": "static/tarBarIcon/home-.png",
+				"pagePath": "pages/index/index"
+			},
+			{
+				"text": "设备",
+				"iconPath": "static/tarBarIcon/lanya.png",
+				"selectedIconPath": "static/tarBarIcon/lanya-.png",
+				"pagePath": "pages/device/device"
+			},
+			{
+				"text": "我的",
+				"iconPath": "static/tarBarIcon/user.png",
+				"selectedIconPath": "static/tarBarIcon/user-.png",
+				"pagePath": "pages/my/my"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}
