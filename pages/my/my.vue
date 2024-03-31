@@ -5,9 +5,9 @@
 	<view class="upside upside-shadow" bindtap="url" data-url="{{user?'../edit/my_edit':'../reg/my_reg'}}">
 	  <view class="user-bar">
 	    <view class="detail">
-	      <view class="name text-cut">{{isLogin?'欢迎您，已登录！':'暂未登录'}}</view>
+	      <view class="name text-cut">欢迎您，已登录！</view>
 	      <view class="desc">
-	        <view class="text-cut">{{isLogin?'云南省第一人民医院新昆华医院睡眠检测':'请点击右边头像进行授权登录'}}</view>
+	        <view class="text-cut">云南省第一人民医院新昆华医院睡眠检测</view>
 	      </view>
 	    </view>
 	    <view class="avatar">
@@ -65,7 +65,7 @@
 	        <text class="text-black">关于我们</text>
 	      </view>
 	    </view>
-	    <view class="item arrow" bindtap="bindSetTap">
+	    <view class="item arrow" @click="bindSetTap">
 	      <view class="content">
 	        <text class="icon-settings my-icon-project text-grey"></text>
 	        <text class="text-black">设置</text>
@@ -89,7 +89,25 @@
 			}
 		},
 		methods: {
-			
+			bindSetTap(){
+				let itemList = ['清除缓存', '退出登录'];
+				wx.showActionSheet({
+					itemList,
+					success: async res => {
+						let idx = res.tapIndex;
+						if (idx == 0) {
+							
+						}
+						if (idx == 1) {
+							
+						}
+		
+					},
+					fail: function (res) {
+						
+					}
+				})
+			}
 		}
 	}
 </script>
