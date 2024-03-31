@@ -82,7 +82,6 @@
 				const indices = this.positionTime.position.map(pos => data.indexOf(pos));
 				this.positionTimeData.xData = timeStrings
 				this.positionTimeData.yIndex = indices
-				console.log(this.positionTimeData)
 			},
 		},
 		mounted() {

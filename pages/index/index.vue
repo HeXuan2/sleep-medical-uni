@@ -45,15 +45,15 @@
 						<view class="title">体位体动</view>
 					</view>
 				</view>
-	       <view @click="url(`/pages/sleep-page/comprehensive-result_index/comprehensive-result_index`)" class="item">
+	       <!-- <view @click="url(`/pages/sleep-page/comprehensive-result_index/comprehensive-result_index`)" class="item">
 					<view class="item-inner">
 						<view class="img bg-cyan">
 							<image src="/static/images/menu/chakan.png" />
 						</view>
 						<view class="title">综合评估</view>
 					</view>
-			</view>
-	      <view @click="url(`/pages/sleep-page/my_report/my_report`)" class="item">
+			</view> -->
+	      <view @click="url(`/pages/sleep-page/my_report_index/my_report_index`)" class="item">
 					<view class="item-inner">
 						<view class="img bg-purple">
 							<image src="../../static/images/menu/my.png" />
@@ -62,15 +62,15 @@
 					</view>
 				</view>
 	
-	      <view @click="url(`/pages/device/device`)" class="item">
+	      <!-- <view @click="url(`/pages/device/device`)" class="item">
 					<view class="item-inner">
 						<view class="img bg-grey">
 							<image src="/static/images/menu/repair.png" />
 						</view>
 						<view class="title">设备管理</view>
 					</view>
-				</view>
-			</view>	
+			</view> -->
+		</view>	
 	    <view class="cute">
 				<view class="item" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_PHONE">
 					<image class="loading" src="../../static/images/home/cute_3.jpg" mode="aspectFill" />

@@ -1,0 +1,86 @@
+@import "/style/base/comm.css";
+.top_bar {
+  width: 100%;
+  
+}
+
+/* date */
+.search-date {
+width:100%;
+display: flex;
+align-items: center;
+  padding: 0 20rpx;
+  margin-left: 25rpx;
+}
+
+.search-date .date-title {
+	font-size: 28rpx;
+	margin-right: 8rpx;
+}
+
+.search-date .date-group {
+	color: #888;
+	border: 1rpx solid #A4A6AE;
+	border-radius: 10rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5rpx 20rpx;
+	font-size: 29rpx;
+}
+
+.search-date .text-line1 {
+	color: #A4A6AE;
+	margin: 0 18rpx;
+}
+
+.search-date .text-line2 {
+	color: rgb(0, 0, 0, 0.8);
+}
+
+.search-date .search-date-picker {
+	width: 150rpx;
+}
+
+.content{
+  margin-top: 120rpx;
+}
+
+.list{
+  width: 95%;
+  margin: 0 auto;
+}
+
+.report-info{
+  position: relative;
+  margin-bottom: 15rpx;
+  border:1px solid #bfd1eb;
+  background: radial-gradient(circle at 10% 20%, rgb(239, 246, 249) 0%, rgb(206, 239, 253) 90%);
+  border-radius: 20rpx;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  padding: 20rpx;
+  overflow: hidden;
+}
+
+.report-tag {
+position: absolute;
+top: 35rpx;
+right: 0;
+border-radius: 10rpx;
+text-align: center;
+background-color: #75b7f9; /* 标签条背景颜色 */
+color: #fff; /* 文字颜色 */
+padding: 2px 8px; /* 调整内边距 */
+transform: rotate(45deg); /* 旋转45度，使其斜着显示 */
+}
+
+.date{
+  font-size: 30rpx;
+  color: #4d4d4d;
+}
+.time{
+  color: #cccccc;
+}
+.content{
+	margin-top: 20rpx;
+}

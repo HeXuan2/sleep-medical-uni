@@ -54,7 +54,23 @@
 			"path" : "pages/sleep-page/sleep_position/sleep_position",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "体位体动统计结果",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/my_report_index/my_report_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "历史报告",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/my_report/my_report",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的报告",
 				"enablePullDownRefresh" : false
 			}
 		}

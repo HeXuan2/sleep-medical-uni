@@ -5,3 +5,12 @@ export const formatTimestamp = function(timestamp) {
     const day = date.getDate();
     return year + '年' + month + '月' + day + '日';
 }
+
+export const formatTime = function(timestamp) {
+    const date = new Date(timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    return `${hours}:${minutes}:${seconds}`;
+}
