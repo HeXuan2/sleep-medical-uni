@@ -19,67 +19,73 @@
 			}
 		},
 		{
-			"path" : "pages/sleep-page/sleep_state_index/sleep_state_index",
-			"style" : 
-			{
-				"navigationBarTitleText" : "睡眠状态",
-				"enablePullDownRefresh" : true
+			"path": "pages/sleep-page/sleep_state_index/sleep_state_index",
+			"style": {
+				"navigationBarTitleText": "睡眠状态",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
-			"path" : "pages/sleep-page/sleep_state/sleep_state",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/sleep-page/sleep_state/sleep_state",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/sleep-page/heart_rate_index/heart_rate_index",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/sleep-page/heart_rate_index/heart_rate_index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/sleep-page/snore_detail_index/snore_detail_index",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/sleep-page/sleep_position_index/sleep_position_index",
+			"style": {
+				"navigationBarTitleText": "体位体动",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "components/snore/snore_analysis_chart/snore_analysis_chart",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/sleep-page/sleep_position/sleep_position",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "components/snore/snore_time_chart/snore_time_chart",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/sleep-page/snore_detail_index/snore_detail_index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/sleep-page/snore_detail/snore_detail",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "components/snore/snore_analysis_chart/snore_analysis_chart",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "components/snore/snore_time_chart/snore_time_chart",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/sleep-page/snore_detail/snore_detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
 	"tabBar": {
 		"color": "#000000",
 		"selectedColor": "#b7d1fa",
-		"list": [
-			{
+		"list": [{
 				"text": "首页",
 				"iconPath": "static/tarBarIcon/home.png",
 				"selectedIconPath": "static/tarBarIcon/home-.png",
