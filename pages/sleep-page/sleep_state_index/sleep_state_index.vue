@@ -96,6 +96,7 @@
 				}
 				request(obj).then(res=>{
 				  let resArr = res.data.content
+				  console.log(res.data.content)
 				  let reportArr = []
 				  for (var i = 0; i < resArr.length; i++) {
 					let item = resArr[i]
