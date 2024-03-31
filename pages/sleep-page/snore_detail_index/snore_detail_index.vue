@@ -96,14 +96,13 @@
 				}
 				request(obj).then(res=>{
 				  let resArr = res.data.content
-				  console.log(res.data.content)
 				  let reportArr = []
 				  for (var i = 0; i < resArr.length; i++) {
 					let item = resArr[i]
 					item.colorName = this.colorNameArr[i]
-					item.title = '睡眠状态'
+					item.title = '鼾声状态'
 					item.recordDate = formatTimestamp(item.startTime)
-					item.url = `/pages/sleep-page/sleep_state/sleep_state?reportId=${item.reportId}&date=${item.recordDate}`
+					item.url = `/pages/sleep-page/snore_detail/snore_detail?reportId=${item.reportId}&date=${item.recordDate}`
 					reportArr.push(item)
 				  }
 				  this.total = res.data.total
@@ -121,5 +120,5 @@
 </script>
 
 <style>
-	@import url("sleep_state_index.css");
+	@import url("snore_detail_index.css");
 </style>

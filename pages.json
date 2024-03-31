@@ -73,13 +73,26 @@
 				"navigationBarTitleText" : "我的报告",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path": "pages/sleep-page/snore_detail_index/snore_detail_index",
+			"style": {
+				"navigationBarTitleText": "鼾声",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/sleep-page/snore_detail/snore_detail",
+			"style": {
+				"navigationBarTitleText": "鼾声统计",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"tabBar": {
 		"color": "#000000",
 		"selectedColor": "#b7d1fa",
-		"list": [
-			{
+		"list": [{
 				"text": "首页",
 				"iconPath": "static/tarBarIcon/home.png",
 				"selectedIconPath": "static/tarBarIcon/home-.png",
