@@ -2,14 +2,14 @@
 	<view class="ec-container">
 		<text class="text-style">鼾声情况分析</text>
 		<view class="card-style">
-			<view class="ec-card" style="margin-left: 60rpx;">
+			<view class="ec-card" style="margin-left: 75rpx;">
 				<view>
 					<image src="/static/images/barchart.png" mode="heightFix" class="snore-1"></image>
 				</view>
 				<view>
-					<text style="color: rgb(197, 194, 194);">{{text1}}</text>
+					<text style="color: rgb(197, 194, 194);font-size: 14px;">{{text1}}</text>
 					<view>
-						<text style="font-size: 22px; font-family: serif;">{{processedSnoreData.times}}次</text>
+						<text style="font-size: 21px; font-family: serif;">{{processedSnoreData.times}}次</text>
 					</view>
 				</view>
 			</view>
@@ -18,21 +18,21 @@
 					<image src="/static/images/time-circle-fill.png" mode="heightFix" class="snore-1"></image>
 				</view>
 				<view>
-					<text style="color: rgb(197, 194, 194);">{{text2}}</text>
+					<text style="color: rgb(197, 194, 194);font-size: 14px;">{{text2}}</text>
 					<view style="font-size: 22px;font-family: serif;">
-						<text style="font-size: 22px; font-family: serif;">{{processedSnoreData.averageTime}}秒</text>
+						<text style="font-size: 21px; font-family: serif;">{{processedSnoreData.averageTime}}秒</text>
 					</view>
 				</view>
 
 			</view>
-			<view class="ec-card" style="margin-left: 60rpx;">
+			<view class="ec-card" style="margin-left: 75rpx;">
 				<view>
 					<image src="/static/images/dashboard.png" mode="heightFix" class="snore-1"></image>
 				</view>
 				<view>
-					<text style="color: rgb(197, 194, 194);">{{text3}}</text>
+					<text style="color: rgb(197, 194, 194);font-size: 14px;">{{text3}}</text>
 					<view>
-						<text style="font-size: 22px; font-family: serif;">{{processedSnoreData.totalHour}}分 </text>
+						<text style="font-size: 21px; font-family: serif;">{{processedSnoreData.totalHour}}分 </text>
 					</view>
 				</view>
 			</view>
@@ -42,9 +42,9 @@
 					</image>
 				</view>
 				<view>
-					<text style="color: rgb(197, 194, 194);">{{text4}}</text>
+					<text style="color: rgb(197, 194, 194);font-size: 14px;">{{text4}}</text>
 					<view>
-						<text style="font-size: 22px; font-family: serif;">{{processedSnoreData.sleepRatio}}%</text>
+						<text style="font-size: 21px; font-family: serif;">{{processedSnoreData.sleepRatio}}%</text>
 					</view>
 				</view>
 			</view>
