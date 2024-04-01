@@ -1,7 +1,7 @@
 <template>
 	<view class="ec-container">
 		<view class="charts">
-			<l-echart ref="chart" @finished="initChart"></l-echart>
+			<l-echart ref="chart"></l-echart>
 		</view>
 	</view>
 </template>
@@ -142,7 +142,6 @@
 				deep: true,
 				handler() {
 					this.init();
-					console.log(this.snoreTime.snoreLabels)
 				}
 			}
 		},
