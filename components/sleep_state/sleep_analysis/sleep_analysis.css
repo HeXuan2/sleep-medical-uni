@@ -32,8 +32,8 @@
 }
 .illustrate{
   display: flex;
-  top: 100rpx;
-  right: 8rpx;
+  top: 120rpx;
+  right: 15rpx;
   position: absolute;
   flex-direction: column;
   border: 1px solid #99CCCC;
