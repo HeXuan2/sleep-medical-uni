@@ -21,7 +21,7 @@
 	<view wx:if="{{isLogin}}" class="down padding-project">
 	
 	  <view class="comm-list menu card-project shadow-project">
-	    <view  class="item arrow" bindtap="url" data-url="../edit/my_edit">
+	    <view  class="item arrow" @click="url(`/pages/editInfo/editInfo`)">
 	      <view class="content">
 	        <text class="icon-edit my-icon-project text-green"></text>
 	        <text class="text-black">修改个人资料</text>
@@ -89,6 +89,11 @@
 			}
 		},
 		methods: {
+			url(url){
+				uni.navigateTo({
+					url:url
+				})
+			},
 			bindSetTap(){
 				let itemList = ['清除缓存', '退出登录'];
 				wx.showActionSheet({

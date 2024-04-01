@@ -61,9 +61,9 @@
 				});
 			}
 		},
-		onLoad() {
-			this.reportId = this.$route.query.reportId
-			this.date = this.$route.query.date
+		onLoad(getData) {
+			this.reportId = getData.reportId
+			this.date = getData.date
 			this.getPositionData()
 		}
 	}
