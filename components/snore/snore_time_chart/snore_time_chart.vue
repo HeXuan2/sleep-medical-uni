@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
 	<view class="ec-container">
 		<view class="charts">
