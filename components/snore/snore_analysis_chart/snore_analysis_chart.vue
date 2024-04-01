@@ -2,7 +2,7 @@
 	<view class="ec-container">
 		<text class="text-style">鼾声情况分析</text>
 		<view class="card-style">
-			<view class="ec-card" style="margin-left: 75rpx;">
+			<view class="ec-card" style="margin-left: 10%;">
 				<view>
 					<image src="/static/images/barchart.png" mode="heightFix" class="snore-1"></image>
 				</view>
@@ -25,7 +25,7 @@
 				</view>
 
 			</view>
-			<view class="ec-card" style="margin-left: 75rpx;">
+			<view class="ec-card" style="margin-left: 10%;">
 				<view>
 					<image src="/static/images/dashboard.png" mode="heightFix" class="snore-1"></image>
 				</view>

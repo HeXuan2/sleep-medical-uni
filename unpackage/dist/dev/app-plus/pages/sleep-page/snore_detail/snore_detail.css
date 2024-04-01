@@ -1,0 +1,134 @@
+.container[data-v-de5583b3]{
+  margin: 0 auto;
+  margin-top: 1.5625rem;
+  width: 100%;
+  border-radius: 5%;
+}
+.title[data-v-de5583b3]{
+  width: 100%;
+  font-weight: bold;
+}
+.info[data-v-de5583b3]{
+  font-family: serif;
+  margin-top: 0.3125rem;
+  width:100%;
+}
+.doctor[data-v-de5583b3]{
+  margin-top: 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  float: right;
+  font-size: 0.625rem;
+  text-decoration:underline;
+  color: blue;
+}
+
+.ec-container[data-v-033bb9e4] {
+	display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 35vh;
+  border-radius: 5%;
+  /* background-color:rgb(253, 253, 253); */
+  
+  background-color:snow;
+  
+  border:1px solid #96c2f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 设置阴影 */
+}
+.ec-card[data-v-033bb9e4] {
+  width: calc(50% - 20px); /*设置子卡片的宽度，减去间距的一半 */
+  margin-bottom: 20px; /* 设置子卡片之间的垂直间距 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-style[data-v-033bb9e4] {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4375rem;
+}
+.text-style[data-v-033bb9e4] {
+  margin-top: 1px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.46875rem;
+}
+.snore-1[data-v-033bb9e4] {
+  width:2.34375rem;
+  height:1.71875rem;
+  margin-left: 0.9375rem;
+}
+
+
+.lime-echart[data-v-e9a2d99c] {
+	position: relative;
+
+	width: 100%;
+	height: 100%;
+}
+.lime-echart__canvas[data-v-e9a2d99c] {
+
+	width: 100%;
+	height: 100%;
+}
+.lime-echart__mask[data-v-e9a2d99c] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+
+
+.ec-container[data-v-1c8f4b38] {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: 100%;
+  height: 35vh;
+  border-radius: 5%;
+  margin-top: 0.625rem;
+  /* background-color:rgb(255, 255, 255); */
+  background-color:snow;
+  
+  border:1px solid #96c2f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 设置阴影 */
+}
+.text[data-v-1c8f4b38] {
+  font-size: 18px;
+  font-weight: 550;
+  text-align: center;
+}
+.charts[data-v-1c8f4b38] {
+	/* margin-top: -40px; */
+}
+
+.card{
+  width: 95%;
+  margin: 0.46875rem auto;
+}
+.reason_txt::before,.reason_txt::after{
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#1AA0E1, #1AA0E1) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+.reason_txt{
+  font-size: 1rem;
+    display: table;
+    width: auto;
+    white-space: nowrap;
+    border-spacing: 0.5rem 0;
+    margin-left: 0.875rem;
+    margin-right: 0.875rem;
+    margin-top: 0.875rem;
+    color: #1AA0E1 !important;
+    cursor: text;
+}

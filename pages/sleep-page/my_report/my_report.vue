@@ -20,8 +20,12 @@
 		<evaluate_box :diagnosis="diagnosis_heart"></evaluate_box>
 	  </view>
 	  <view class="bt_dash_line"></view>
-	  <view class="card">
+	  <view class="card" v-if="isLoadingBreathe">
 	    <view class="load text-grey">呼吸</view>
+		<breathe_analysis :breatheStop="breatheStop"></breathe_analysis>
+		<breathe_ahi :ahi="ahi"></breathe_ahi>
+		<breathe_stop_time :breatheStopTime="breatheStopTime"></breathe_stop_time>
+		<evaluate_box :diagnosis="diagnosis_breathe"></evaluate_box>
 	  </view>
 	  <view class="bt_dash_line"></view>
 	  <view class="card" v-if="isLoadingSnore">
@@ -65,6 +69,10 @@
 	import heart_rate_period from '../../../components/heart/heart_rate_period/heart_rate_period.vue'
 	import heart_rate_time from '../../../components/heart/heart_rate_time/heart_rate_time.vue'
 	
+	import breathe_ahi from '../../../components/breathe/breathe_ahi/breathe_ahi.vue'
+	import breathe_analysis from '../../../components/breathe/breathe_analysis/breathe_analysis.vue'
+	import breathe_stop_time from '../../../components/breathe/breathe_stop_time/breathe_stop_time.vue'
+	
 	import { request } from "/utils/httpUtils.js";
 	import {showToast} from "/utils/ui.js";
 	export default {
@@ -81,7 +89,10 @@
 			sleep_time,
 			heart_rate_analysis,
 			heart_rate_period,
-			heart_rate_time
+			heart_rate_time,
+			breathe_ahi,
+			breathe_analysis,
+			breathe_stop_time
 		},
 		data() {
 			return {
@@ -113,6 +124,12 @@
 				isLoadingPosition:false,
 				isLoadingDiagnosis:false,
 				isLoadingSnore:false,
+				
+				diagnosis_breathe:{},
+				ahi:0,
+				breatheStop:{},
+				breatheStopTime:{},
+				isLoadingBreathe:false
 			}
 		},
 		methods: {
@@ -225,6 +242,28 @@
 				}).catch(err=>{
 				  showToast("请稍后重试！",1500)
 				});
+			},
+			getBreatheData(){
+				let obj = {
+				  method: "GET",
+				  showLoading: true,
+				  url:`/breathe/getData`,
+				  data:{
+					reportId:this.reportId
+				  },
+				  message:"正在获取数据"
+				}
+				request(obj).then(res=>{
+					let resData = res.data
+					this.ahi = resData.ahi
+					this.breatheStop = resData.breatheStop
+					this.breatheStopTime = resData.breatheStopTime
+					this.diagnosis_breathe.msg = resData.evaluation
+					this.diagnosis_breathe.title = "呼吸"
+					this.isLoadingBreathe = true
+				}).catch(err=>{
+				  showToast("请稍后重试！",1500)
+				});
 			}
 		},
 		onLoad(getData) {
@@ -235,6 +274,7 @@
 			this.getSnoreData()
 			this.getStateData()
 			this.getHeartData()
+			this.getBreatheData()
 		}
 	}
 </script>

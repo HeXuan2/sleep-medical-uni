@@ -1,7 +1,7 @@
 <template>
 	<view class="ec-container">
 		<view class="charts">
-			<l-echart ref="chart"></l-echart>
+			<l-echart ref="chart" @finished="initChart"></l-echart>
 		</view>
 	</view>
 </template>
@@ -57,7 +57,8 @@
 						title: {
 							text: '鼾声分时图',
 							left: 'center',
-							top:'10'
+							top:'10',
+							padding: [0, 0, 0, 0],
 						},
 						tooltip: {
 							trigger: 'axis',
@@ -67,10 +68,10 @@
 							}
 						},
 						grid: {
-						        left: '5%',
-						        right: '4%',
+						        left: '9%',
+						        right: '9%',
 						        top: '1%', // 减少顶部边距值以使图表上移
-						        bottom: '40%', // 可以适当调整底部边距以改变图表整体高度
+						        bottom: '30%', // 可以适当调整底部边距以改变图表整体高度
 						        containLabel: true
 						      },
 						xAxis: {
@@ -126,7 +127,7 @@
 						  name: '打鼾记录',
 						  type: 'bar',
 						  data: data.map((val) => val * 0.5), // 假设您想要的高度是原来的一半
-						  barWidth: '100%', // 设置柱子宽度，以填充时间间隔
+						  barWidth: '80%', // 设置柱子宽度，以填充时间间隔
 						  itemStyle: {
 						    color: '#FBC295',
 						  }
@@ -142,6 +143,7 @@
 				deep: true,
 				handler() {
 					this.init();
+					console.log(this.snoreTime.snoreLabels)
 				}
 			}
 		},
