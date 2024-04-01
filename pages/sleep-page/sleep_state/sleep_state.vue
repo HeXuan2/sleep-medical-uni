@@ -3,10 +3,10 @@
 		<view class="mt-5 text-grey">
 		      <text class='reason_txt text-xsBlue'>{{date}}睡眠状态统计</text>
 		</view>
-		<view class="card">
-			<sleep_proportion></sleep_proportion>
-			<sleep_analysis> </sleep_analysis>
-			<sleep_time></sleep_time>
+		<view class="card" v-if="isLoading">
+			<sleep_proportion :proportionList="proportionList"></sleep_proportion>
+			<sleep_analysis :stateInfo="stateInfo"> </sleep_analysis>
+			<sleep_time :stateTime="stateTime"></sleep_time>
 			<evaluate_box :diagnosis="diagnosis"></evaluate_box>
 		</view>
 	</view>
@@ -17,6 +17,8 @@
 	import sleep_proportion from '../../../components/sleep_state/sleep_proportion/sleep_proportion.vue'
 	import sleep_time from '../../../components/sleep_state/sleep_time/sleep_time.vue'
 	import evaluate_box from '../../../components/evaluate_box/evaluate_box.vue'
+	import { request } from "/utils/httpUtils.js";
+	import {showToast} from "/utils/ui.js";
 	export default {
 		components:{
 			sleep_analysis,
@@ -28,18 +30,41 @@
 			return {
 				reportId:'',
 				date:'',
-				diagnosis:{
-					title:"睡眠状态",
-					msg:"在整夜的睡眠测试中,睡眠效率为78.8%,睡眠综合评分为73.7,睡眠的评估结果为“整夜睡眠质量欠佳。"
-				}
+				diagnosis:{},
+				proportionList:[],
+				stateTime:{},
+				stateInfo:{},
+				isLoading:false
 			}
 		},
 		methods: {
-			
+			getStateData(){
+				let obj = {
+				  method: "GET",
+				  showLoading: true,
+				  url:`/state/getData`,
+				  data:{
+					reportId:this.reportId
+				  },
+				  message:"正在获取数据"
+				}
+				request(obj).then(res=>{
+					let resData = res.data
+					this.proportionList = resData.proportionList
+					this.stateInfo = resData.stateInfo
+					this.stateTime = resData.stateTime
+					this.diagnosis.msg = resData.evaluation
+					this.diagnosis.title = "睡眠状态"
+					this.isLoading = true
+				}).catch(err=>{
+				  showToast("请稍后重试！",1500)
+				});
+			}
 		},
 		onLoad() {
 			this.reportId = this.$route.query.reportId
 			this.date = this.$route.query.date
+			this.getStateData()
 		}
 	}
 </script>

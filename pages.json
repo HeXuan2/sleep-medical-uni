@@ -30,7 +30,7 @@
 			"path" : "pages/sleep-page/sleep_state/sleep_state",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "睡眠状态统计",
 				"enablePullDownRefresh" : false
 			}
 		},
@@ -38,7 +38,15 @@
 			"path" : "pages/sleep-page/heart_rate_index/heart_rate_index",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "心率",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rate/heart_rate",
+			"style" : 
+			{
+				"navigationBarTitleText" : "心率统计",
 				"enablePullDownRefresh" : false
 			}
 		},
