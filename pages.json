@@ -51,6 +51,22 @@
 			}
 		},
 		{
+			"path" : "pages/sleep-page/breathe_detail_index/breathe_detail_index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "呼吸",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/breathe_detail/breathe_detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "呼吸统计",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path" : "pages/sleep-page/sleep_position_index/sleep_position_index",
 			"style" : 
 			{
