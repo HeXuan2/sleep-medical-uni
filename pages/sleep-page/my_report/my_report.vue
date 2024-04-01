@@ -4,17 +4,24 @@
 	      <text class='reason_txt text-xsBlue'>{{date}}睡眠健康报告</text>
 	  </view>
 	  <view class="bt_dash_line"></view>
-	  <view class="card" >
+	  <view class="card"  v-if="isLoadingState">
 	  <view class="load text-grey">睡眠状态</view>
+	  <sleep_proportion :proportionList="proportionList_state"></sleep_proportion>
+	  <sleep_analysis :stateInfo="stateInfo"> </sleep_analysis>
+	  <sleep_time :stateTime="stateTime"></sleep_time>
+	  <evaluate_box :diagnosis="diagnosis_state"></evaluate_box>
 	  </view>
 	  <view class="bt_dash_line"></view>
-	  <view class="card">
+	  <view class="card" v-if="isLoadingHeart">
 	    <view class="load text-grey">心率</view>
+		<heart_rate_analysis :overnightHeart="overnightHeart"></heart_rate_analysis>
+		<heart_rate_period :awake="awake" :deepSleep="deepSleep" :lightSleep="lightSleep" :rem="rem"> </heart_rate_period>
+		<heart_rate_time :heartTime="heartTime"></heart_rate_time>
+		<evaluate_box :diagnosis="diagnosis_heart"></evaluate_box>
 	  </view>
 	  <view class="bt_dash_line"></view>
 	  <view class="card">
 	    <view class="load text-grey">呼吸</view>
-	    
 	  </view>
 	  <view class="bt_dash_line"></view>
 	  <view class="card" v-if="isLoadingSnore">
@@ -50,6 +57,14 @@
 	import snore_analysis_chart from '../../../components/snore/snore_analysis_chart/snore_analysis_chart.vue'
 	import snore_time_chart from '../../../components/snore/snore_time_chart/snore_time_chart.vue'
 	
+	import sleep_analysis from '../../../components/sleep_state/sleep_analysis/sleep_analysis.vue'
+	import sleep_proportion from '../../../components/sleep_state/sleep_proportion/sleep_proportion.vue'
+	import sleep_time from '../../../components/sleep_state/sleep_time/sleep_time.vue'
+	
+	import heart_rate_analysis from '../../../components/heart/heart_rate_analysis/heart_rate_analysis.vue'
+	import heart_rate_period from '../../../components/heart/heart_rate_period/heart_rate_period.vue'
+	import heart_rate_time from '../../../components/heart/heart_rate_time/heart_rate_time.vue'
+	
 	import { request } from "/utils/httpUtils.js";
 	import {showToast} from "/utils/ui.js";
 	export default {
@@ -60,7 +75,13 @@
 			body_move_chart,
 			final_diagnosis,
 			snore_analysis_chart,
-			snore_time_chart
+			snore_time_chart,
+			sleep_analysis,
+			sleep_proportion,
+			sleep_time,
+			heart_rate_analysis,
+			heart_rate_period,
+			heart_rate_time
 		},
 		data() {
 			return {
@@ -74,6 +95,21 @@
 				diagnosis_snore: {},
 				snoreInfo: {},
 				snoreTime: {},
+				diagnosis_state:{},
+				proportionList_state:[],
+				stateTime:{},
+				stateInfo:{},
+				
+				diagnosis_heart:{},
+				overnightHeart:{},
+				awake:{},
+				deepSleep:{},
+				lightSleep:{},
+				rem:{},
+				heartTime:{},
+				isLoadingHeart:false,
+				
+				isLoadingState:false,
 				isLoadingPosition:false,
 				isLoadingDiagnosis:false,
 				isLoadingSnore:false,
@@ -142,6 +178,53 @@
 				}).catch(err => {
 					showToast("请稍后重试！", 1500)
 				});
+			},
+			getStateData(){
+				let obj = {
+				  method: "GET",
+				  showLoading: true,
+				  url:`/state/getData`,
+				  data:{
+					reportId:this.reportId
+				  },
+				  message:"正在获取数据"
+				}
+				request(obj).then(res=>{
+					let resData = res.data
+					this.proportionList_state = resData.proportionList
+					this.stateInfo = resData.stateInfo
+					this.stateTime = resData.stateTime
+					this.diagnosis_state.msg = resData.evaluation
+					this.diagnosis_state.title = "睡眠状态"
+					this.isLoadingState = true
+				}).catch(err=>{
+				  showToast("请稍后重试！",1500)
+				});
+			},
+			getHeartData(){
+				let obj = {
+				  method: "GET",
+				  showLoading: true,
+				  url:`/heart/getData`,
+				  data:{
+					reportId:this.reportId
+				  },
+				  message:"正在获取数据"
+				}
+				request(obj).then(res=>{
+					let resData = res.data
+					this.overnightHeart = resData.overnightHeart
+					this.awake = resData.awake
+					this.deepSleep = resData.deepSleep
+					this.lightSleep = resData.lightSleep
+					this.rem = resData.rem
+					this.heartTime = resData.heartTime
+					this.diagnosis_heart.msg = resData.evaluation
+					this.diagnosis_heart.title = "心率"
+					this.isLoadingHeart = true
+				}).catch(err=>{
+				  showToast("请稍后重试！",1500)
+				});
 			}
 		},
 		onLoad() {
@@ -150,6 +233,8 @@
 			this.getPositionData()
 			this.getDiagnosis()
 			this.getSnoreData()
+			this.getStateData()
+			this.getHeartData()
 		}
 	}
 </script>

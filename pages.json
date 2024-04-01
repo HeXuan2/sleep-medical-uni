@@ -38,6 +38,14 @@
 			"path" : "pages/sleep-page/heart_rate_index/heart_rate_index",
 			"style" : 
 			{
+				"navigationBarTitleText" : "心率",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/sleep-page/heart_rate/heart_rate",
+			"style" : 
+			{
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
