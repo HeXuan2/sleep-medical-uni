@@ -20,14 +20,19 @@
 		},
 		methods: {
 			init(){
-				var times = this.breatheStopTime.times.sort((a, b) => a - b);
+				// var times = this.breatheStopTime.times.sort((a, b) => a - b);
+				var times = []
+				for(var i=0;i<this.breatheStopTime.breathStopLabel.length;i++){
+					var time = this.breatheStopTime.frequency * i + this.breatheStopTime.startTime
+					times.push(time)
+				}
 				times = times.map(timestamp => {
 				  const date = new Date(timestamp);
 				  const hours = date.getHours().toString().padStart(2, '0'); // 转换为两位数的小时
 				  const minutes = date.getMinutes().toString().padStart(2, '0'); // 转换为两位数的分钟
 				  return `${hours}:${minutes}`; // 将小时和分钟拼接为字符串
 				});
-				var positionTimeData = this.breatheStopTime.breathStopValues.map((state, index) => {
+				var positionTimeData = this.breatheStopTime.breathStopLabel.map((state, index) => {
 				  return [times[index], state, state];
 				})
 				// console.log(positionTimeData)
