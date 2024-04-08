@@ -33,7 +33,7 @@
 				  return `${hours}:${minutes}`; // 将小时和分钟拼接为字符串
 				});
 				var positionTimeData = this.breatheStopTime.breathStopLabel.map((state, index) => {
-				  return [times[index], state, state];
+				  return [times[index], state, 20];
 				})
 				// console.log(positionTimeData)
 				var option = {

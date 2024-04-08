@@ -6,7 +6,8 @@
 		<view class="card" v-if="isLoading">
 			<breathe_analysis :breatheStop="breatheStop"></breathe_analysis>
 			<breathe_ahi :ahi="ahi"></breathe_ahi>
-			<breathe_stop_time :breatheStopTime="breatheStopTime"></breathe_stop_time>
+			<!-- <breathe_stop_time :breatheStopTime="breatheStopTime"></breathe_stop_time> -->
+			<breathe_sort :breatheStopTime="breatheStopTime"></breathe_sort>
 			<evaluate_box :diagnosis="diagnosis"></evaluate_box>
 		</view>
 	</view>
@@ -16,6 +17,7 @@
 	import breathe_ahi from '../../../components/breathe/breathe_ahi/breathe_ahi.vue'
 	import breathe_analysis from '../../../components/breathe/breathe_analysis/breathe_analysis.vue'
 	import breathe_stop_time from '../../../components/breathe/breathe_stop_time/breathe_stop_time.vue'
+	import breathe_sort from '../../../components/breathe/breathe_sort/breathe_sort.vue'
 	import evaluate_box from '../../../components/evaluate_box/evaluate_box.vue'
 	import { request } from "/utils/httpUtils.js";
 	import {showToast} from "/utils/ui.js";
@@ -24,6 +26,7 @@
 			breathe_ahi,
 			breathe_analysis,
 			breathe_stop_time,
+			breathe_sort,
 			evaluate_box
 		},
 		data() {

@@ -75,7 +75,7 @@
 				        step: 'start', // 设置阶梯型
 				        symbol: 'none',
 				        lineStyle: {   // 设置线条的样式
-				          color: '#FFCCCC' // 修改线条颜色为红色
+				          color: '#FF9900' // 修改线条颜色为红色
 				        },
 				        data: this.positionTimeData // 这里设置你的具体数据，使用二维数组表示 x 和 y 的对应关系
 				      }]
