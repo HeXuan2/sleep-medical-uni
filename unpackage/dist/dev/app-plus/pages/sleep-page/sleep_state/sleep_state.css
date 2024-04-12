@@ -45,6 +45,7 @@
 }
 
 
+
 .container1[data-v-30532247] {
   top: 0;
   bottom: 0;
@@ -77,8 +78,8 @@
 }
 .illustrate[data-v-30532247]{
   display: flex;
-  top: 3.125rem;
-  right: 0.25rem;
+  top: 3.75rem;
+  right: 0.46875rem;
   position: absolute;
   flex-direction: column;
   border: 1px solid #99CCCC;
@@ -89,6 +90,7 @@
 .illustrate uni-text[data-v-30532247]{
   font-size: 8px;
 }
+
 
 .container[data-v-2df65c8c] {
   top: 0;
@@ -145,7 +147,7 @@
 .illustrate[data-v-2df65c8c]{
   display: flex;
   top: 4.6875rem;
-  left: 14.0625rem;
+  left: 13.75rem;
   position: absolute;
   border: 1px solid #99CCCC;
   border-radius: 0.3125rem;

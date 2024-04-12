@@ -29,7 +29,7 @@ if (typeof uni !== "undefined" && uni && uni.requireGlobal) {
 if (uni.restoreGlobal) {
   uni.restoreGlobal(Vue, weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
-(function(vue, shared) {
+(function(vue) {
   "use strict";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
@@ -38,26 +38,26 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$r = {
+  const _sfc_main$C = {
     data() {
       return {
         contentList: [
           {
             title: "每周科普|安宁疗护，守护生命的最后一公里",
             tips: "昆华医院睡眠健康中心",
-            utime: "2024-05-21 19:23:56",
+            utime: "2024-04-1 19:23:56",
             cover: "https://mmbiz.qpic.cn/sz_mmbiz_png/9E2hJp33OI8rdROozjeETVUg8ylyRX4xGjms5mCy8VeGhcCrFBuHxaUzo8WuUg7dW1R4omLmcbWW9bJChiajRpQ/640?wx_fmt=png&from=appmsg&wxfrom=13"
           },
           {
             title: "每周科普|胃镜下的钩虫，你好吗？",
             tips: "昆华医院睡眠健康中心",
-            utime: "2024-05-14 13:20:14",
+            utime: "2024-03-14 13:20:14",
             cover: "https://mmbiz.qpic.cn/sz_mmbiz_png/9E2hJp33OIibEYFuaicOoo3gnQVJ9QlwtibE8G8ibdcVjrR57La7ibEAnDQDMzhMpfjywecAJhHnk1WIia3kDt0smG6w/640?wx_fmt=png&from=appmsg&wxfrom=5&wx_lazy=1&wx_co=1"
           },
           {
             title: "每周科普|冬至的第一锅羊肉这样吃，既暖身又不上火~",
             tips: "昆华医院睡眠健康中心",
-            utime: "2024-05-07 14:23:47",
+            utime: "2024-03-07 14:23:47",
             cover: "https://mmbiz.qpic.cn/sz_mmbiz_png/9E2hJp33OI9d5fE5ibfoF1NicGhcsBMLsTt2mDyZ7CnMsbiaEgEv0mKzlgsb5gmuRDicNNG8I0c8Hss3lrQKyPKapA/640?wx_fmt=png&from=appmsg&wxfrom=13"
           }
         ]
@@ -73,7 +73,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
       vue.createElementVNode("view", { class: "up" }, [
         vue.createElementVNode("image", {
@@ -228,14 +228,24 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$q], ["__file", "E:/health/sleep-medical-uni/pages/index/index.vue"]]);
-  const _sfc_main$q = {
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$B], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/index/index.vue"]]);
+  function formatAppLog(type, filename, ...args) {
+    if (uni.__log__) {
+      uni.__log__(type, filename, ...args);
+    } else {
+      console[type].apply(console, [...args, filename]);
+    }
+  }
+  function resolveEasycom(component, easycom) {
+    return typeof component === "string" ? easycom : component;
+  }
+  const _sfc_main$B = {
     name: "device_info",
     data() {
       return {};
     }
   };
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$A(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
       vue.createElementVNode("view", { class: "page-card-box" }, [
         vue.createElementVNode("view", { class: "bg-blue-gradient shadow-blur page-card-view" }, [
@@ -260,65 +270,93 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const device_info = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$p], ["__scopeId", "data-v-43a986d6"], ["__file", "E:/health/sleep-medical-uni/components/device_info/device_info.vue"]]);
-  const _sfc_main$p = {
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$A], ["__scopeId", "data-v-43a986d6"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/device_info/device_info.vue"]]);
+  const showToast = function(content, duration) {
+    if (!duration)
+      duration = 2e3;
+    uni.showToast({
+      title: content,
+      icon: "none",
+      duration
+    });
+  };
+  var isShowLoading = false;
+  const showLoading = function(title) {
+    if (isShowLoading)
+      return;
+    uni.showLoading({
+      title: title ? title : "",
+      mask: true,
+      success: () => {
+        isShowLoading = true;
+      }
+    });
+  };
+  const hideLoading = function() {
+    if (!isShowLoading)
+      return;
+    isShowLoading = false;
+    uni.hideLoading();
+  };
+  const _sfc_main$A = {
     components: {
-      device_info
+      device_info: __easycom_0$3
     },
     data() {
       return {
         tag: ["已连接", "已绑定", "申请绑定"],
-        flag: 0
+        flag: 0,
+        isLoading: false
       };
     },
     methods: {
       changeTag(index) {
         this.flag = index;
+      },
+      scanCode() {
+        uni.scanCode({
+          onlyFromCamera: true,
+          success: function(res) {
+            formatAppLog("log", "at pages/device/device.vue:38", "条码类型：" + res.scanType);
+            formatAppLog("log", "at pages/device/device.vue:39", "条码内容：" + res.result);
+            showToast("设备添加成功", 2e3);
+          }
+        });
       }
     }
   };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$z(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_device_info = resolveEasycom(vue.resolveDynamicComponent("device_info"), __easycom_0$3);
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
-      vue.createElementVNode("view", { class: "bbf panel-between" }, [
-        (vue.openBlock(true), vue.createElementBlock(
-          vue.Fragment,
-          null,
-          vue.renderList($data.tag, (item, index) => {
-            return vue.openBlock(), vue.createElementBlock("view", {
-              class: "bbf-item",
-              onClick: ($event) => $options.changeTag(index),
-              bindtap: "changeTag"
-            }, [
-              vue.createElementVNode(
-                "view",
-                {
-                  class: vue.normalizeClass(["fo-28", "lh-90", "text-center", index === $data.flag ? "bold fo-t" : "fo-g"])
-                },
-                vue.toDisplayString(item),
-                3
-                /* TEXT, CLASS */
-              ),
-              index == $data.flag ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "botn"
-              })) : vue.createCommentVNode("v-if", true)
-            ], 8, ["onClick"]);
-          }),
-          256
-          /* UNKEYED_FRAGMENT */
-        ))
+      vue.createCommentVNode(` <view class="bbf panel-between">\r
+		  <view v-for="(item,index) in tag" class='bbf-item ' @click='changeTag(index)' bindtap='changeTag'>\r
+		    <view :class="['fo-28', 'lh-90', 'text-center', index === flag ? 'bold fo-t' : 'fo-g']">{{item}}</view>\r
+		    <view class='botn' v-if="index == flag"></view>\r
+		  </view>
+		</view> `),
+      vue.createElementVNode("view", null, [
+        vue.createVNode(_component_device_info)
       ]),
-      vue.createCommentVNode(' <view class="device">\r\n		  <device_info> </device_info>\r\n		</view> ')
+      vue.createElementVNode("button", {
+        class: "addDevice",
+        type: "primary",
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.scanCode && $options.scanCode(...args))
+      }, "添加设备")
     ]);
   }
-  const PagesDeviceDevice = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$o], ["__file", "E:/health/sleep-medical-uni/pages/device/device.vue"]]);
-  const _sfc_main$o = {
+  const PagesDeviceDevice = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$z], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/device/device.vue"]]);
+  const _sfc_main$z = {
     data() {
       return {
         isLogin: true
       };
     },
     methods: {
+      url(url) {
+        uni.navigateTo({
+          url
+        });
+      },
       bindSetTap() {
         let itemList = ["清除缓存", "退出登录"];
         wx.showActionSheet({
@@ -332,7 +370,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$y(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
       vue.createCommentVNode("top area begin"),
       vue.createElementVNode("view", {
@@ -367,8 +405,7 @@ if (uni.restoreGlobal) {
         vue.createElementVNode("view", { class: "comm-list menu card-project shadow-project" }, [
           vue.createElementVNode("view", {
             class: "item arrow",
-            bindtap: "url",
-            "data-url": "../edit/my_edit"
+            onClick: _cache[0] || (_cache[0] = ($event) => $options.url(`/pages/editInfo/editInfo`))
           }, [
             vue.createElementVNode("view", { class: "content" }, [
               vue.createElementVNode("text", { class: "icon-edit my-icon-project text-green" }),
@@ -425,7 +462,7 @@ if (uni.restoreGlobal) {
           ]),
           vue.createElementVNode("view", {
             class: "item arrow",
-            onClick: _cache[0] || (_cache[0] = (...args) => $options.bindSetTap && $options.bindSetTap(...args))
+            onClick: _cache[1] || (_cache[1] = (...args) => $options.bindSetTap && $options.bindSetTap(...args))
           }, [
             vue.createElementVNode("view", { class: "content" }, [
               vue.createElementVNode("text", { class: "icon-settings my-icon-project text-grey" }),
@@ -438,18 +475,8 @@ if (uni.restoreGlobal) {
       vue.createCommentVNode("down area end")
     ]);
   }
-  const PagesMyMy = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n], ["__file", "E:/health/sleep-medical-uni/pages/my/my.vue"]]);
-  function formatAppLog(type, filename, ...args) {
-    if (uni.__log__) {
-      uni.__log__(type, filename, ...args);
-    } else {
-      console[type].apply(console, [...args, filename]);
-    }
-  }
-  function resolveEasycom(component, easycom) {
-    return shared.isString(component) ? easycom : component;
-  }
-  const _sfc_main$n = {
+  const PagesMyMy = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$y], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/my/my.vue"]]);
+  const _sfc_main$y = {
     name: "app-nav-li",
     props: {
       data: {
@@ -475,7 +502,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "doc-card" }, [
       vue.createElementVNode(
         "view",
@@ -515,8 +542,8 @@ if (uni.restoreGlobal) {
       )
     ]);
   }
-  const appNavLi = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__scopeId", "data-v-235c7a9d"], ["__file", "E:/health/sleep-medical-uni/components/app-nav-li/app-nav-li.vue"]]);
-  const _sfc_main$m = {
+  const appNavLi = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x], ["__scopeId", "data-v-235c7a9d"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/app-nav-li/app-nav-li.vue"]]);
+  const _sfc_main$x = {
     name: "card",
     components: {
       appNavLi
@@ -531,7 +558,7 @@ if (uni.restoreGlobal) {
       return {};
     }
   };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_appNavLi = vue.resolveComponent("appNavLi");
     return vue.openBlock(), vue.createElementBlock("view", { class: "ui-container" }, [
       vue.createElementVNode("view", { class: "ui-grid ui-cols-2" }, [
@@ -552,8 +579,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-858a8678"], ["__file", "E:/health/sleep-medical-uni/components/card/card.vue"]]);
-  const _sfc_main$l = {
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w], ["__scopeId", "data-v-858a8678"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/card/card.vue"]]);
+  const _sfc_main$w = {
     props: {
       total: {
         type: Number,
@@ -623,7 +650,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "mainBox" }, [
       vue.createElementVNode("view", { class: "paginationBox" }, [
         vue.createElementVNode(
@@ -675,7 +702,7 @@ if (uni.restoreGlobal) {
             },
             null,
             544
-            /* HYDRATE_EVENTS, NEED_PATCH */
+            /* NEED_HYDRATION, NEED_PATCH */
           ), [
             [vue.vModelText, $data.inputValue]
           ]),
@@ -684,34 +711,7 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__scopeId", "data-v-fa04880e"], ["__file", "E:/health/sleep-medical-uni/components/pagination/pagination.vue"]]);
-  const showToast = function(content, duration) {
-    if (!duration)
-      duration = 2e3;
-    uni.showToast({
-      title: content,
-      icon: "none",
-      duration
-    });
-  };
-  var isShowLoading = false;
-  const showLoading = function(title) {
-    if (isShowLoading)
-      return;
-    uni.showLoading({
-      title: title ? title : "",
-      mask: true,
-      success: () => {
-        isShowLoading = true;
-      }
-    });
-  };
-  const hideLoading = function() {
-    if (!isShowLoading)
-      return;
-    isShowLoading = false;
-    uni.hideLoading();
-  };
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v], ["__scopeId", "data-v-fa04880e"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/pagination/pagination.vue"]]);
   const BASE_URL = "http://42.193.14.241:9998";
   const request = function(obj) {
     return new Promise(function(resolve, reject) {
@@ -767,6 +767,13 @@ if (uni.restoreGlobal) {
     const day = date.getDate();
     return year + "年" + month + "月" + day + "日";
   };
+  const formatTimestamp_ = function(timestamp) {
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  };
   const formatTime$1 = function(timestamp) {
     const date = new Date(timestamp);
     const hours = date.getHours();
@@ -774,7 +781,7 @@ if (uni.restoreGlobal) {
     const seconds = date.getSeconds();
     return `${hours}:${minutes}:${seconds}`;
   };
-  const _sfc_main$k = {
+  const _sfc_main$v = {
     components: {
       card: __easycom_0$2,
       pagination: __easycom_1$1
@@ -854,7 +861,7 @@ if (uni.restoreGlobal) {
       this.getReportPageInfo();
     }
   };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$u(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_card = resolveEasycom(vue.resolveDynamicComponent("card"), __easycom_0$2);
     const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
@@ -936,8 +943,8 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageSleep_state_indexSleep_state_index = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/sleep_state_index/sleep_state_index.vue"]]);
-  const _sfc_main$j = {
+  const PagesSleepPageSleep_state_indexSleep_state_index = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$u], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/sleep_state_index/sleep_state_index.vue"]]);
+  const _sfc_main$u = {
     props: {
       diagnosis: {
         type: Object,
@@ -949,7 +956,7 @@ if (uni.restoreGlobal) {
       return {};
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$t(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
       vue.createElementVNode("view", { class: "title" }, [
         vue.createElementVNode(
@@ -971,7 +978,7 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__scopeId", "data-v-de5583b3"], ["__file", "E:/health/sleep-medical-uni/components/evaluate_box/evaluate_box.vue"]]);
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$t], ["__scopeId", "data-v-de5583b3"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/evaluate_box/evaluate_box.vue"]]);
   const cacheChart = {};
   class EventEmit {
     constructor() {
@@ -1387,7 +1394,7 @@ if (uni.restoreGlobal) {
     });
   }
   global = {};
-  const _sfc_main$i = {
+  const _sfc_main$t = {
     name: "lime-echart",
     props: {
       customStyle: String,
@@ -1646,7 +1653,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
     return $options.canvasId ? (vue.openBlock(), vue.createElementBlock("view", {
       key: 0,
       class: "lime-echart",
@@ -1699,7 +1706,7 @@ if (uni.restoreGlobal) {
         },
         null,
         32
-        /* HYDRATE_EVENTS */
+        /* NEED_HYDRATION */
       )) : vue.createCommentVNode("v-if", true),
       $data.isOffscreenCanvas ? (vue.openBlock(), vue.createElementBlock("canvas", {
         key: 3,
@@ -1708,7 +1715,7 @@ if (uni.restoreGlobal) {
       }, null, 12, ["canvas-id"])) : vue.createCommentVNode("v-if", true)
     ], 12, ["aria-label"])) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-e9a2d99c"], ["__file", "E:/health/sleep-medical-uni/uni_modules/lime-echart/components/l-echart/l-echart.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$s], ["__scopeId", "data-v-e9a2d99c"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/uni_modules/lime-echart/components/l-echart/l-echart.vue"]]);
   /*! *****************************************************************************
   	Copyright (c) Microsoft Corporation.
   
@@ -75615,10 +75622,26 @@ if (uni.restoreGlobal) {
     zrUtil: util$1,
     zrender
   }, Symbol.toStringTag, { value: "Module" }));
-  const _sfc_main$h = {
+  const _sfc_main$s = {
     data() {
-      return {
-        option: {
+      return {};
+    },
+    props: {
+      stateInfo: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      init() {
+        var value_real = [
+          this.stateInfo.totalTime,
+          this.stateInfo.awakeNum,
+          this.stateInfo.fallAsleepTime,
+          this.stateInfo.deepSleepTime,
+          this.stateInfo.lightSleepTime
+        ];
+        var option = {
           legend: {
             data: ["当前睡眠分析", "良好睡眠参照"],
             orient: "horizontal",
@@ -75677,7 +75700,7 @@ if (uni.restoreGlobal) {
             type: "radar",
             data: [
               {
-                value: [371.5, 15, 13.5, 81.5, 207.5],
+                value: value_real,
                 name: "当前睡眠分析",
                 symbolSize: 4,
                 areaStyle: {
@@ -75711,13 +75734,9 @@ if (uni.restoreGlobal) {
               }
             ]
           }]
-        }
-      };
-    },
-    methods: {
-      init() {
+        };
         this.$refs.chart.init(echarts, (chart) => {
-          chart.setOption(this.option);
+          chart.setOption(option);
         });
       }
     },
@@ -75725,24 +75744,35 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "container1" }, [
       vue.createElementVNode("view", { class: "title1" }, "睡眠分析："),
       vue.createElementVNode("view", { class: "charts1" }, [
-        vue.createVNode(_component_l_echart, {
-          ref: "chart",
-          onFinished: $options.init
-        }, null, 8, ["onFinished"])
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
       ]),
       vue.createElementVNode("view", { class: "illustrate" }, [
         vue.createElementVNode("text", { style: { "display": "block" } }, [
           vue.createElementVNode("text", { style: { "color": "red" } }, "总睡眠间期时间："),
-          vue.createTextVNode("444.0分钟 ")
+          vue.createTextVNode(
+            vue.toDisplayString($props.stateInfo.totalIntervalSleepTime.toFixed(1)) + "分钟 ",
+            1
+            /* TEXT */
+          )
         ]),
         vue.createElementVNode("text", { style: { "display": "block", "margin-top": "2px" } }, [
           vue.createElementVNode("text", { style: { "color": "red" } }, "REM持续时间: "),
-          vue.createTextVNode("82.5分钟 ")
+          vue.createTextVNode(
+            vue.toDisplayString($props.stateInfo.remtime.toFixed(1)) + "分钟 ",
+            1
+            /* TEXT */
+          )
         ]),
         vue.createElementVNode("text", { style: { "display": "block", "margin-top": "12px" } }, [
           vue.createElementVNode("text", { style: { "color": "red" } }, "总睡眠间期时间："),
@@ -75755,42 +75785,38 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const sleep_analysis = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-30532247"], ["__file", "E:/health/sleep-medical-uni/components/sleep_state/sleep_analysis/sleep_analysis.vue"]]);
-  const _sfc_main$g = {
+  const sleep_analysis = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$r], ["__scopeId", "data-v-30532247"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/sleep_state/sleep_analysis/sleep_analysis.vue"]]);
+  const _sfc_main$r = {
     data() {
       return {
-        sleepProportion: []
+        colors: ["#CC6699", "#66B2FF", "#666699"]
       };
+    },
+    props: {
+      proportionList: {
+        type: Array,
+        default: () => []
+      }
     },
     methods: {
       init() {
+        const colors = ["#CC6699", "#66B2FF", "#666699", "#FFCC99", "#C2C2C2"];
+        var option = {
+          series: [{
+            label: {
+              normal: {
+                fontSize: 10
+              }
+            },
+            type: "pie",
+            center: ["32%", "45%"],
+            radius: "55%",
+            selectedMode: "single",
+            data: this.proportionList,
+            color: colors
+          }]
+        };
         this.$refs.chart.init(echarts, (chart) => {
-          let labelName = ["浅睡", "熟睡", "REM"];
-          let labelVal = [0.3, 0.5, 0.2];
-          const colors = ["#CC6699", "#66B2FF", "#666699", "#FFCC99", "#C2C2C2"];
-          let sleepSateData = [];
-          for (let i2 = 0; i2 < labelName.length; i2++) {
-            let sleepStateObj = {
-              name: labelName[i2],
-              value: labelVal[i2]
-            };
-            sleepSateData.push(sleepStateObj);
-          }
-          var option = {
-            series: [{
-              label: {
-                normal: {
-                  fontSize: 10
-                }
-              },
-              type: "pie",
-              center: ["32%", "45%"],
-              radius: "55%",
-              selectedMode: "single",
-              data: sleepSateData,
-              color: colors
-            }]
-          };
           chart.setOption(option);
         });
       }
@@ -75799,32 +75825,53 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
       vue.createElementVNode("view", { class: "title" }, "睡眠占比："),
       vue.createElementVNode("view", { class: "charts" }, [
-        vue.createVNode(_component_l_echart, {
-          ref: "chart",
-          onFinished: _ctx.initChart
-        }, null, 8, ["onFinished"])
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
       ]),
       vue.createElementVNode("view", { class: "lable" }, [
         vue.createElementVNode("view", {
           class: "square",
           style: { "background-color": "#CC6699" }
         }),
-        vue.createElementVNode("text", { class: "fontset" }, "熟睡:50%"),
+        vue.createElementVNode(
+          "text",
+          { class: "fontset" },
+          vue.toDisplayString($props.proportionList[0].name) + ":" + vue.toDisplayString(($props.proportionList[0].value * 100).toFixed(1)) + "%",
+          1
+          /* TEXT */
+        ),
         vue.createElementVNode("view", {
           class: "square",
           style: { "background-color": "#66B2FF" }
         }),
-        vue.createElementVNode("text", { class: "fontset" }, "浅睡:30%"),
+        vue.createElementVNode(
+          "text",
+          { class: "fontset" },
+          vue.toDisplayString($props.proportionList[1].name) + ":" + vue.toDisplayString(($props.proportionList[1].value * 100).toFixed(1)) + "%",
+          1
+          /* TEXT */
+        ),
         vue.createElementVNode("view", {
           class: "square",
           style: { "background-color": "#666699" }
         }),
-        vue.createElementVNode("text", { class: "fontset" }, "REM:20%")
+        vue.createElementVNode(
+          "text",
+          { class: "fontset" },
+          vue.toDisplayString($props.proportionList[2].name) + ":" + vue.toDisplayString(($props.proportionList[2].value * 100).toFixed(1)) + "%",
+          1
+          /* TEXT */
+        )
       ]),
       vue.createElementVNode("view", { class: "illustrate" }, [
         vue.createElementVNode("text", { style: { "display": "block" } }, [
@@ -75834,40 +75881,36 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const sleep_proportion = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-2df65c8c"], ["__file", "E:/health/sleep-medical-uni/components/sleep_state/sleep_proportion/sleep_proportion.vue"]]);
-  const _sfc_main$f = {
+  const sleep_proportion = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$q], ["__scopeId", "data-v-2df65c8c"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/sleep_state/sleep_proportion/sleep_proportion.vue"]]);
+  const _sfc_main$q = {
     data() {
-      return {};
+      return {
+        positionTimeData: [],
+        timeStrings: []
+      };
+    },
+    props: {
+      stateTime: {
+        type: Object,
+        default: () => ({})
+      }
     },
     methods: {
-      generateFixedYValues(timeArray) {
-        const data = [];
-        const sleepStages = ["觉醒", "浅睡", "熟睡", "REM"];
-        for (let i2 = 0; i2 < timeArray.length; i2++) {
-          const randomIndex = Math.floor(Math.random() * 4);
-          data.push([timeArray[i2], sleepStages[randomIndex]]);
-        }
-        return data;
-      },
-      generateTimeArray() {
-        const startTime = /* @__PURE__ */ new Date();
-        startTime.setHours(22, 0, 0, 0);
-        const endTime = /* @__PURE__ */ new Date();
-        endTime.setDate(endTime.getDate() + 1);
-        endTime.setHours(6, 0, 0, 0);
-        const timeArray = [];
-        let currentTime = startTime;
-        while (currentTime <= endTime) {
-          const formattedTime = formatTime("hh:mm", currentTime);
-          timeArray.push(formattedTime);
-          currentTime = new Date(currentTime.getTime() + 480 * 1e3);
-        }
-        return timeArray;
+      dataProcess() {
+        this.stateTime.times = this.stateTime.times.sort((a, b) => a - b);
+        this.timeStrings = this.stateTime.times.map((timestamp) => {
+          const date = new Date(timestamp);
+          const hours = date.getHours().toString().padStart(2, "0");
+          const minutes = date.getMinutes().toString().padStart(2, "0");
+          return `${hours}:${minutes}`;
+        });
+        this.positionTimeData = this.stateTime.sleepStates.map((state, index) => {
+          return [this.timeStrings[index], state];
+        });
       },
       init() {
+        this.dataProcess();
         this.$refs.chart.init(echarts, (chart) => {
-          const timeArray = this.generateTimeArray();
-          const randomData = this.generateFixedYValues(timeArray);
           const option = {
             grid: {
               left: "10%",
@@ -75881,7 +75924,7 @@ if (uni.restoreGlobal) {
             },
             xAxis: {
               type: "category",
-              data: timeArray
+              data: this.timeStrings
             },
             yAxis: {
               type: "category",
@@ -75898,7 +75941,7 @@ if (uni.restoreGlobal) {
                 color: "#0099CC"
                 // 修改线条颜色为红色
               },
-              data: randomData
+              data: this.positionTimeData
               // 这里设置你的具体数据，使用二维数组表示 x 和 y 的对应关系
             }]
           };
@@ -75910,20 +75953,23 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
       vue.createElementVNode("view", { class: "title" }, "睡眠分期图:"),
       vue.createElementVNode("view", { class: "charts" }, [
-        vue.createVNode(_component_l_echart, {
-          ref: "chart",
-          onFinished: _ctx.initChart
-        }, null, 8, ["onFinished"])
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
       ])
     ]);
   }
-  const sleep_time = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-4536b7e2"], ["__file", "E:/health/sleep-medical-uni/components/sleep_state/sleep_time/sleep_time.vue"]]);
-  const _sfc_main$e = {
+  const sleep_time = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$p], ["__scopeId", "data-v-4536b7e2"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/sleep_state/sleep_time/sleep_time.vue"]]);
+  const _sfc_main$p = {
     components: {
       sleep_analysis,
       sleep_proportion,
@@ -75934,19 +75980,44 @@ if (uni.restoreGlobal) {
       return {
         reportId: "",
         date: "",
-        diagnosis: {
-          title: "睡眠状态",
-          msg: "在整夜的睡眠测试中,睡眠效率为78.8%,睡眠综合评分为73.7,睡眠的评估结果为“整夜睡眠质量欠佳。"
-        }
+        diagnosis: {},
+        proportionList: [],
+        stateTime: {},
+        stateInfo: {},
+        isLoading: false
       };
     },
-    methods: {},
-    onLoad() {
-      this.reportId = this.$route.query.reportId;
-      this.date = this.$route.query.date;
+    methods: {
+      getStateData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/state/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.proportionList = resData.proportionList;
+          this.stateInfo = resData.stateInfo;
+          this.stateTime = resData.stateTime;
+          this.diagnosis.msg = resData.evaluation;
+          this.diagnosis.title = "睡眠状态";
+          this.isLoading = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
+      this.getStateData();
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_sleep_proportion = vue.resolveComponent("sleep_proportion");
     const _component_sleep_analysis = vue.resolveComponent("sleep_analysis");
     const _component_sleep_time = vue.resolveComponent("sleep_time");
@@ -75961,26 +76032,19 @@ if (uni.restoreGlobal) {
           /* TEXT */
         )
       ]),
-      vue.createElementVNode("view", { class: "card" }, [
-        vue.createVNode(_component_sleep_proportion),
-        vue.createVNode(_component_sleep_analysis),
-        vue.createVNode(_component_sleep_time),
+      $data.isLoading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card"
+      }, [
+        vue.createVNode(_component_sleep_proportion, { proportionList: $data.proportionList }, null, 8, ["proportionList"]),
+        vue.createVNode(_component_sleep_analysis, { stateInfo: $data.stateInfo }, null, 8, ["stateInfo"]),
+        vue.createVNode(_component_sleep_time, { stateTime: $data.stateTime }, null, 8, ["stateTime"]),
         vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis }, null, 8, ["diagnosis"])
-      ])
+      ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageSleep_stateSleep_state = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/sleep_state/sleep_state.vue"]]);
-  const _sfc_main$d = {
-    data() {
-      return {};
-    },
-    methods: {}
-  };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view");
-  }
-  const PagesSleepPageHeart_rate_indexHeart_rate_index = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/heart_rate_index/heart_rate_index.vue"]]);
-  const _sfc_main$c = {
+  const PagesSleepPageSleep_stateSleep_state = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$o], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/sleep_state/sleep_state.vue"]]);
+  const _sfc_main$o = {
     components: {
       card: __easycom_0$2,
       pagination: __easycom_1$1
@@ -76042,9 +76106,9 @@ if (uni.restoreGlobal) {
           for (var i2 = 0; i2 < resArr.length; i2++) {
             let item = resArr[i2];
             item.colorName = this.colorNameArr[i2];
-            item.title = "体位体动";
+            item.title = "心率";
             item.recordDate = formatTimestamp(item.startTime);
-            item.url = `/pages/sleep-page/sleep_position/sleep_position?reportId=${item.reportId}&date=${item.recordDate}`;
+            item.url = `/pages/sleep-page/heart_rate/heart_rate?reportId=${item.reportId}&date=${item.recordDate}`;
             reportArr.push(item);
           }
           this.total = res.data.total;
@@ -76059,7 +76123,7 @@ if (uni.restoreGlobal) {
       this.getReportPageInfo();
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_card = resolveEasycom(vue.resolveDynamicComponent("card"), __easycom_0$2);
     const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
@@ -76141,8 +76205,1184 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageSleep_position_indexSleep_position_index = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/sleep_position_index/sleep_position_index.vue"]]);
-  const _sfc_main$b = {
+  const PagesSleepPageHeart_rate_indexHeart_rate_index = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/heart_rate_index/heart_rate_index.vue"]]);
+  const _sfc_main$n = {
+    data() {
+      return {
+        describe: []
+      };
+    },
+    props: {
+      overnightHeart: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      init() {
+        for (let key in this.overnightHeart) {
+          if (this.overnightHeart[key] < 50)
+            this.describe.push("偏低");
+          else if (this.overnightHeart[key] > 100)
+            this.describe.push("偏高");
+          else
+            this.describe.push("正常");
+        }
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
+      vue.createElementVNode("view", { class: "title" }, "心率分析"),
+      vue.createElementVNode("view", { class: "data" }, [
+        vue.createElementVNode("view", { class: "data-info" }, [
+          vue.createElementVNode("view", { class: "top" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/down.png",
+              mode: "widthFix"
+            }),
+            vue.createElementVNode(
+              "text",
+              null,
+              "低：" + vue.toDisplayString($props.overnightHeart.lowest) + "bpm",
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode(
+            "text",
+            { class: "bot" },
+            vue.toDisplayString($data.describe[0]),
+            1
+            /* TEXT */
+          )
+        ]),
+        vue.createElementVNode("view", { class: "data-info" }, [
+          vue.createElementVNode("view", { class: "top" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/smile.png",
+              mode: "widthFix"
+            }),
+            vue.createElementVNode(
+              "text",
+              null,
+              "均：" + vue.toDisplayString($props.overnightHeart.average) + "bpm",
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode(
+            "text",
+            { class: "bot" },
+            vue.toDisplayString($data.describe[1]),
+            1
+            /* TEXT */
+          )
+        ]),
+        vue.createElementVNode("view", { class: "data-info" }, [
+          vue.createElementVNode("view", { class: "top" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/up.png",
+              mode: "widthFix"
+            }),
+            vue.createElementVNode(
+              "text",
+              null,
+              "高：" + vue.toDisplayString($props.overnightHeart.highest) + "bpm",
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode(
+            "text",
+            { class: "bot" },
+            vue.toDisplayString($data.describe[2]),
+            1
+            /* TEXT */
+          )
+        ])
+      ])
+    ]);
+  }
+  const heart_rate_analysis = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__scopeId", "data-v-830bb88a"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/heart/heart_rate_analysis/heart_rate_analysis.vue"]]);
+  const _sfc_main$m = {
+    data() {
+      return {};
+    },
+    props: {
+      awake: {
+        type: Object,
+        default: () => ({})
+      },
+      deepSleep: {
+        type: Object,
+        default: () => ({})
+      },
+      lightSleep: {
+        type: Object,
+        default: () => ({})
+      },
+      rem: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      init() {
+        var awake = ["觉醒期", this.awake.lowest, this.awake.average, this.awake.highest];
+        var rem = ["REM期", this.rem.lowest, this.rem.average, this.rem.highest];
+        var deepSleep = ["熟睡期", this.deepSleep.lowest, this.deepSleep.average, this.deepSleep.highest];
+        var lightSleep = ["浅睡期", this.lightSleep.lowest, this.lightSleep.average, this.lightSleep.highest];
+        var option = {
+          legend: {},
+          grid: {
+            left: "10%",
+            // 左边距
+            right: "10%",
+            // 右边距
+            top: "15%",
+            // 上边距
+            bottom: "12%"
+            // 下边距
+          },
+          dataset: {
+            source: [
+              ["product", "低", "均", "高"],
+              awake,
+              rem,
+              deepSleep,
+              lightSleep
+            ]
+          },
+          xAxis: { type: "category" },
+          yAxis: {},
+          series: [
+            {
+              type: "bar",
+              label: {
+                show: true,
+                // 显示数值
+                position: "top",
+                // 数值显示在柱子的上方
+                fontSize: 10
+              }
+            },
+            {
+              type: "bar",
+              label: {
+                show: true,
+                // 显示数值
+                position: "top",
+                // 数值显示在柱子的上方
+                fontSize: 10
+              }
+            },
+            {
+              type: "bar",
+              label: {
+                show: true,
+                // 显示数值
+                position: "top",
+                // 数值显示在柱子的上方
+                fontSize: 10
+              }
+            }
+          ]
+        };
+        this.$refs.chart.init(echarts, (chart) => {
+          chart.setOption(option);
+        });
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
+      vue.createElementVNode("view", { class: "title" }, "不同睡眠时期的心率:"),
+      vue.createElementVNode("view", { class: "charts" }, [
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
+      ])
+    ]);
+  }
+  const heart_rate_period = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-687ea0fe"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/heart/heart_rate_period/heart_rate_period.vue"]]);
+  const _sfc_main$l = {
+    data() {
+      return {
+        positionTimeData: [],
+        timeStrings: []
+      };
+    },
+    props: {
+      heartTime: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      dataProcess() {
+        var times = [];
+        for (var i2 = 0; i2 < this.heartTime.heartValues.length; i2++) {
+          var time2 = this.heartTime.frequency * i2 + this.heartTime.startTime;
+          times.push(time2);
+        }
+        this.timeStrings = times.map((timestamp) => {
+          const date = new Date(timestamp);
+          const hours = date.getHours().toString().padStart(2, "0");
+          const minutes = date.getMinutes().toString().padStart(2, "0");
+          return `${hours}:${minutes}`;
+        });
+        this.positionTimeData = this.heartTime.heartValues.map((value, index) => {
+          return [this.timeStrings[index], value];
+        });
+      },
+      init() {
+        this.dataProcess();
+        const option = {
+          grid: {
+            left: "10%",
+            // 左边距
+            right: "5%",
+            // 右边距
+            top: "10%",
+            // 上边距
+            bottom: "12%"
+            // 下边距
+          },
+          xAxis: {
+            type: "category",
+            data: this.timeStrings
+          },
+          yAxis: {
+            type: "value",
+            scale: true
+          },
+          series: [{
+            type: "line",
+            data: this.positionTimeData,
+            smooth: true,
+            symbol: "none",
+            sampling: "lttb",
+            itemStyle: {
+              color: "rgb(255, 70, 131)"
+            }
+          }]
+        };
+        this.$refs.chart.init(echarts, (chart) => {
+          chart.setOption(option);
+        });
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
+      vue.createElementVNode("view", { class: "title" }, "心率时分图:"),
+      vue.createElementVNode("view", { class: "charts" }, [
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
+      ])
+    ]);
+  }
+  const heart_rate_time = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__scopeId", "data-v-9f4defbc"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/heart/heart_rate_time/heart_rate_time.vue"]]);
+  const _sfc_main$k = {
+    components: {
+      heart_rate_analysis,
+      heart_rate_period,
+      heart_rate_time,
+      evaluate_box: __easycom_0$1
+    },
+    data() {
+      return {
+        reportId: "",
+        date: "",
+        diagnosis: {},
+        overnightHeart: {},
+        awake: {},
+        deepSleep: {},
+        lightSleep: {},
+        rem: {},
+        heartTime: {},
+        isLoading: false
+      };
+    },
+    methods: {
+      getHeartData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/heart/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.overnightHeart = resData.overnightHeart;
+          this.awake = resData.awake;
+          this.deepSleep = resData.deepSleep;
+          this.lightSleep = resData.lightSleep;
+          this.rem = resData.rem;
+          this.heartTime = resData.heartTime;
+          this.diagnosis.msg = resData.evaluation;
+          this.diagnosis.title = "心率";
+          this.isLoading = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
+      this.getHeartData();
+    }
+  };
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_heart_rate_analysis = vue.resolveComponent("heart_rate_analysis");
+    const _component_heart_rate_period = vue.resolveComponent("heart_rate_period");
+    const _component_heart_rate_time = vue.resolveComponent("heart_rate_time");
+    const _component_evaluate_box = resolveEasycom(vue.resolveDynamicComponent("evaluate_box"), __easycom_0$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
+      vue.createElementVNode("view", { class: "mt-5 text-grey" }, [
+        vue.createElementVNode(
+          "text",
+          { class: "reason_txt text-xsBlue" },
+          vue.toDisplayString($data.date) + "心率统计",
+          1
+          /* TEXT */
+        )
+      ]),
+      $data.isLoading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card"
+      }, [
+        vue.createVNode(_component_heart_rate_analysis, { overnightHeart: $data.overnightHeart }, null, 8, ["overnightHeart"]),
+        vue.createVNode(_component_heart_rate_period, {
+          awake: $data.awake,
+          deepSleep: $data.deepSleep,
+          lightSleep: $data.lightSleep,
+          rem: $data.rem
+        }, null, 8, ["awake", "deepSleep", "lightSleep", "rem"]),
+        vue.createVNode(_component_heart_rate_time, { heartTime: $data.heartTime }, null, 8, ["heartTime"]),
+        vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis }, null, 8, ["diagnosis"])
+      ])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const PagesSleepPageHeart_rateHeart_rate = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/heart_rate/heart_rate.vue"]]);
+  const _sfc_main$j = {
+    components: {
+      card: __easycom_0$2,
+      pagination: __easycom_1$1
+    },
+    data() {
+      return {
+        isLoading: false,
+        startDate: "",
+        //默认起始时间  
+        endDate: "",
+        //默认结束时间 
+        colorNameArr: ["cyan", "blue", "red", "orange", "olive", "green", "purple", "mauve"],
+        aimDesc: [],
+        pageNum: 1,
+        // 当前页码
+        total: 0,
+        // 数据总数
+        pageSize: 8
+        // 每页显示条数
+      };
+    },
+    methods: {
+      handlePageChange(pageNum) {
+        this.pageNum = pageNum;
+        this.getReportPageInfo();
+      },
+      onStartDateChange(event) {
+        this.startDate = event.detail.value;
+      },
+      onEndDateChange(event) {
+        this.endDate = event.detail.value;
+      },
+      bindDateSearchTap() {
+        this.getReportPageInfo();
+      },
+      bindDateClearTap() {
+        this.startDate = "";
+        this.endDate = "";
+        this.getReportPageInfo();
+      },
+      // 得到分页信息
+      getReportPageInfo() {
+        let page = this.pageNum;
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/report/getStateByPage`,
+          data: {
+            page,
+            startDate: this.startDate,
+            endDate: this.endDate,
+            pageSize: this.pageSize
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resArr = res.data.content;
+          let reportArr = [];
+          for (var i2 = 0; i2 < resArr.length; i2++) {
+            let item = resArr[i2];
+            item.colorName = this.colorNameArr[i2];
+            item.title = "呼吸";
+            item.recordDate = formatTimestamp(item.startTime);
+            item.url = `/pages/sleep-page/breathe_detail/breathe_detail?reportId=${item.reportId}&date=${item.recordDate}`;
+            reportArr.push(item);
+          }
+          this.total = res.data.total;
+          this.isLoading = true;
+          this.aimDesc = reportArr;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad() {
+      this.getReportPageInfo();
+    }
+  };
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_card = resolveEasycom(vue.resolveDynamicComponent("card"), __easycom_0$2);
+    const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
+      vue.createElementVNode("view", { class: "head" }, [
+        vue.createElementVNode("view", { class: "top_bar bar search fixed flex-direction" }, [
+          vue.createElementVNode("view", {
+            class: "bar search bg-white",
+            style: { "width": "100%" }
+          }, [
+            vue.createElementVNode("view", { class: "search-date" }, [
+              vue.createElementVNode("view", { class: "date-group" }, [
+                vue.createElementVNode("picker", {
+                  onChange: _cache[0] || (_cache[0] = (...args) => $options.onStartDateChange && $options.onStartDateChange(...args)),
+                  mode: "date",
+                  value: $data.startDate
+                }, [
+                  vue.createElementVNode("view", { class: "picker" }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass(!$data.startDate ? "text-line1" : "text-line2")
+                      },
+                      vue.toDisplayString($data.startDate || "开始日期"),
+                      3
+                      /* TEXT, CLASS */
+                    )
+                  ])
+                ], 40, ["value"]),
+                vue.createElementVNode("text", { class: "text-line1" }, "~"),
+                vue.createElementVNode("picker", {
+                  onChange: _cache[1] || (_cache[1] = (...args) => $options.onEndDateChange && $options.onEndDateChange(...args)),
+                  mode: "date",
+                  value: $data.endDate
+                }, [
+                  vue.createElementVNode("view", { class: "picker" }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass(!$data.endDate ? "text-line1" : "text-line2")
+                      },
+                      vue.toDisplayString($data.endDate || "结束日期"),
+                      3
+                      /* TEXT, CLASS */
+                    )
+                  ])
+                ], 40, ["value"])
+              ]),
+              vue.createElementVNode("view", {
+                onClick: _cache[2] || (_cache[2] = (...args) => $options.bindDateSearchTap && $options.bindDateSearchTap(...args)),
+                class: "date-btn btn mid bg-gray margin-left-xs",
+                style: { "width": "130rpx" }
+              }, "搜索"),
+              vue.createElementVNode("view", {
+                onClick: _cache[3] || (_cache[3] = (...args) => $options.bindDateClearTap && $options.bindDateClearTap(...args)),
+                class: "date-btn btn mid bg-grey light margin-left-xs",
+                style: { "width": "130rpx" }
+              }, "清空")
+            ]),
+            vue.renderSlot(_ctx.$slots, "searchEnd")
+          ])
+        ])
+      ]),
+      $data.isLoading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card-content"
+      }, [
+        vue.createElementVNode("view", { class: "load text-grey" }, "筛选结果如下所示，点击查看详情"),
+        vue.createElementVNode("view", { class: "card-list" }, [
+          vue.createVNode(_component_card, { aimDesc: $data.aimDesc }, null, 8, ["aimDesc"])
+        ]),
+        vue.createElementVNode("view", null, [
+          vue.createVNode(_component_pagination, {
+            total: $data.total,
+            pageSize: $data.pageSize,
+            pageNum: $data.pageNum,
+            onPageChange: $options.handlePageChange
+          }, null, 8, ["total", "pageSize", "pageNum", "onPageChange"])
+        ])
+      ])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const PagesSleepPageBreathe_detail_indexBreathe_detail_index = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/breathe_detail_index/breathe_detail_index.vue"]]);
+  const _sfc_main$i = {
+    data() {
+      return {
+        ahiDesc: {
+          text1: "AHI<5: 正常;",
+          text2: "5<=AHI<16: 轻度睡眠呼吸暂停低通气综合征;",
+          text3: "16<=AHI<=30: 中度睡眠呼吸暂停低通气综合征;",
+          text4: "30<AHI:重度睡眠呼吸暂停低通气综合征;"
+        },
+        ahiText: {
+          advice: "保持合理饮食和适度运动有助于维持健康水平"
+        }
+      };
+    },
+    props: {
+      ahi: {
+        type: Number,
+        default: () => ({})
+      }
+    },
+    methods: {
+      init() {
+        this.ahiText.index = this.ahi;
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container-ahi" }, [
+      vue.createElementVNode("view", { class: "content" }, [
+        vue.createElementVNode("view", { class: "ahi-card1" }, [
+          vue.createElementVNode(
+            "text",
+            { style: { "font-size": "34rpx" } },
+            "AHI指数：" + vue.toDisplayString($data.ahiText.index),
+            1
+            /* TEXT */
+          ),
+          vue.createElementVNode("view", { class: "bar-container" }, [
+            vue.createElementVNode("view", { class: "bar-card" }, [
+              vue.createElementVNode("view", { class: "bar-section normal" }, [
+                vue.createElementVNode("text", { style: { "font-size": "28rpx" } }, "正常")
+              ]),
+              vue.createElementVNode("view", { class: "bar-section mild" }, [
+                vue.createElementVNode("text", { style: { "font-size": "28rpx" } }, "轻度")
+              ]),
+              vue.createElementVNode("view", { class: "bar-section moderate" }, [
+                vue.createElementVNode("text", { style: { "font-size": "28rpx" } }, "中度")
+              ]),
+              vue.createElementVNode("view", { class: "bar-section severe" }, [
+                vue.createElementVNode("text", { style: { "font-size": "28rpx" } }, "重度")
+              ])
+            ])
+          ]),
+          vue.createElementVNode("image", {
+            class: "index-move",
+            src: "/static/images/index1.png"
+          }),
+          vue.createElementVNode("view", null, [
+            vue.createElementVNode(
+              "text",
+              { class: "card1-text1" },
+              vue.toDisplayString($data.ahiText.advice),
+              1
+              /* TEXT */
+            )
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "ahi-card2" }, [
+          vue.createElementVNode("text", { class: "ahi-text1" }, "什么是AHI:\\n"),
+          vue.createElementVNode("text", { class: "ahi-text2" }, " AHI指数是指每小时睡眠内呼吸暂停加上低通气的总次数.\\n "),
+          vue.createElementVNode("view", { style: { "margin-top": "20rpx" } }, [
+            vue.createElementVNode("text", { class: "ahi-text2" }, "AHI分度参考\\n "),
+            vue.createElementVNode(
+              "text",
+              { class: "ahi-text2" },
+              vue.toDisplayString($data.ahiDesc.text1) + "\\n ",
+              1
+              /* TEXT */
+            ),
+            vue.createElementVNode(
+              "text",
+              { class: "ahi-text2" },
+              vue.toDisplayString($data.ahiDesc.text2) + "\\n ",
+              1
+              /* TEXT */
+            ),
+            vue.createElementVNode(
+              "text",
+              { class: "ahi-text2" },
+              vue.toDisplayString($data.ahiDesc.text3) + "\\n ",
+              1
+              /* TEXT */
+            ),
+            vue.createElementVNode(
+              "text",
+              { class: "ahi-text2" },
+              vue.toDisplayString($data.ahiDesc.text4) + "\\n ",
+              1
+              /* TEXT */
+            )
+          ])
+        ])
+      ])
+    ]);
+  }
+  const breathe_ahi = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-49dff810"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/breathe/breathe_ahi/breathe_ahi.vue"]]);
+  const _sfc_main$h = {
+    data() {
+      return {};
+    },
+    props: {
+      breatheStop: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {}
+  };
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container-breath" }, [
+      vue.createElementVNode("text", { class: "breath-text" }, "呼吸情况分析"),
+      vue.createElementVNode("view", { class: "horizontal-cards" }, [
+        vue.createElementVNode("view", { class: "card" }, [
+          vue.createElementVNode("view", { class: "card-content" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/breath_1.png",
+              class: "breath_stop"
+            })
+          ]),
+          vue.createElementVNode("view", { class: "card-content" }, [
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/data.png",
+                class: "icon"
+              }),
+              vue.createElementVNode(
+                "text",
+                { class: "text" },
+                "总次数:" + vue.toDisplayString($props.breatheStop.total) + "次",
+                1
+                /* TEXT */
+              )
+            ]),
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/time.png",
+                class: "icon"
+              }),
+              vue.createElementVNode(
+                "text",
+                { class: "text" },
+                "最长时间:" + vue.toDisplayString($props.breatheStop.maxDurationTime) + "秒",
+                1
+                /* TEXT */
+              )
+            ]),
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index.png",
+                class: "icon"
+              }),
+              vue.createElementVNode(
+                "text",
+                { class: "text" },
+                "指数:" + vue.toDisplayString($props.breatheStop.perHour) + "次/小时",
+                1
+                /* TEXT */
+              )
+            ])
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "card" }, [
+          vue.createElementVNode("view", { class: "card-content" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/breath_2.png",
+              class: "breath_stop"
+            })
+          ]),
+          vue.createElementVNode("view", { class: "card-content" }, [
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/data.png",
+                class: "icon"
+              }),
+              vue.createElementVNode("text", { class: "text" }, "总次数:33次")
+            ]),
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/time.png",
+                class: "icon"
+              }),
+              vue.createElementVNode("text", { class: "text" }, "最长时间:35秒")
+            ]),
+            vue.createElementVNode("view", { class: "line" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index.png",
+                class: "icon"
+              }),
+              vue.createElementVNode("text", { class: "text" }, "指数:5.3次/小时")
+            ])
+          ])
+        ])
+      ])
+    ]);
+  }
+  const breathe_analysis = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-69537380"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/breathe/breathe_analysis/breathe_analysis.vue"]]);
+  const _sfc_main$g = {
+    data() {
+      return {};
+    },
+    props: {
+      breatheStopTime: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      init() {
+        var times = [];
+        for (var i2 = 0; i2 < this.breatheStopTime.breathStopLabel.length; i2++) {
+          var time2 = this.breatheStopTime.frequency * i2 + this.breatheStopTime.startTime;
+          times.push(time2);
+        }
+        times = times.map((timestamp) => {
+          const date = new Date(timestamp);
+          const hours = date.getHours().toString().padStart(2, "0");
+          const minutes = date.getMinutes().toString().padStart(2, "0");
+          return `${hours}:${minutes}`;
+        });
+        var positionTimeData = this.breatheStopTime.breathStopLabel.map((state, index) => {
+          return [times[index], state, 20];
+        });
+        var option = {
+          xAxis: {
+            type: "category",
+            splitLine: {
+              show: false
+            }
+          },
+          title: {
+            left: "center",
+            top: "5%",
+            text: "呼吸暂停分时图"
+          },
+          yAxis: {
+            type: "value"
+          },
+          series: [{
+            name: "scatter",
+            type: "scatter",
+            itemStyle: {
+              color: "pink"
+              // 设置小圆圈的颜色
+            },
+            symbolSize: function(data) {
+              return data[2];
+            },
+            data: positionTimeData
+            // 这里的 data 应该是一个包含 [x, y, size] 数组的数组
+          }]
+        };
+        this.$refs.chart.init(echarts, (chart) => {
+          chart.setOption(option);
+        });
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container-stop" }, [
+      vue.createVNode(
+        _component_l_echart,
+        { ref: "chart" },
+        null,
+        512
+        /* NEED_PATCH */
+      )
+    ]);
+  }
+  const breathe_stop_time = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-462e89b2"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/breathe/breathe_stop_time/breathe_stop_time.vue"]]);
+  const _sfc_main$f = {
+    data() {
+      return {
+        positionTimeData: [],
+        timeStrings: []
+      };
+    },
+    props: {
+      breatheStopTime: {
+        type: Object,
+        default: () => ({})
+      }
+    },
+    methods: {
+      dataProcess() {
+        var times = [];
+        for (var i2 = 0; i2 < this.breatheStopTime.breathStopLabel.length; i2++) {
+          var time2 = this.breatheStopTime.frequency * i2 + this.breatheStopTime.startTime;
+          times.push(time2);
+        }
+        this.timeStrings = times.map((timestamp) => {
+          const date = new Date(timestamp);
+          const hours = date.getHours().toString().padStart(2, "0");
+          const minutes = date.getMinutes().toString().padStart(2, "0");
+          return `${hours}:${minutes}`;
+        });
+        this.positionTimeData = this.breatheStopTime.breathStopLabel.map((state, index) => {
+          let value;
+          if (state === 0) {
+            value = "紊乱";
+          } else if (state === 1) {
+            value = "正常";
+          }
+          return [this.timeStrings[index], value];
+        });
+      },
+      init() {
+        this.dataProcess();
+        this.$refs.chart.init(echarts, (chart) => {
+          const option = {
+            grid: {
+              left: "10%",
+              // 左边距
+              right: "5%",
+              // 右边距
+              top: "5%",
+              // 上边距
+              bottom: "12%"
+              // 下边距
+            },
+            xAxis: {
+              type: "category",
+              data: this.timeStrings,
+              axisLabel: {
+                fontSize: 12
+                // 设置字体大小
+              }
+            },
+            yAxis: {
+              type: "category",
+              // 设置 y 轴类型为分类
+              data: ["正常", "紊乱"],
+              axisLabel: {
+                fontSize: 12
+                // 设置字体大小
+              }
+            },
+            series: [{
+              type: "line",
+              step: "start",
+              // 设置阶梯型
+              symbol: "none",
+              lineStyle: {
+                // 设置线条的样式
+                color: "#FF9900"
+                // 修改线条颜色为红色
+              },
+              data: this.positionTimeData
+              // 这里设置你的具体数据，使用二维数组表示 x 和 y 的对应关系
+            }]
+          };
+          chart.setOption(option);
+        });
+      }
+    },
+    mounted() {
+      this.init();
+    }
+  };
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
+      vue.createElementVNode("view", { class: "title" }, "呼吸分类图（显示每分钟是否存在呼吸紊乱）:"),
+      vue.createElementVNode("view", { class: "charts" }, [
+        vue.createVNode(
+          _component_l_echart,
+          { ref: "chart" },
+          null,
+          512
+          /* NEED_PATCH */
+        )
+      ])
+    ]);
+  }
+  const breathe_sort = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-6806b59e"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/breathe/breathe_sort/breathe_sort.vue"]]);
+  const _sfc_main$e = {
+    components: {
+      breathe_ahi,
+      breathe_analysis,
+      breathe_stop_time,
+      breathe_sort,
+      evaluate_box: __easycom_0$1
+    },
+    data() {
+      return {
+        reportId: "",
+        date: "",
+        diagnosis: {},
+        ahi: 0,
+        breatheStop: {},
+        breatheStopTime: {},
+        isLoading: false
+      };
+    },
+    methods: {
+      getBreatheData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/breathe/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.ahi = resData.ahi;
+          this.breatheStop = resData.breatheStop;
+          this.breatheStopTime = resData.breatheStopTime;
+          this.diagnosis.msg = resData.evaluation;
+          this.diagnosis.title = "呼吸";
+          this.isLoading = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
+      this.getBreatheData();
+    }
+  };
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_breathe_analysis = vue.resolveComponent("breathe_analysis");
+    const _component_breathe_ahi = vue.resolveComponent("breathe_ahi");
+    const _component_breathe_sort = vue.resolveComponent("breathe_sort");
+    const _component_evaluate_box = resolveEasycom(vue.resolveDynamicComponent("evaluate_box"), __easycom_0$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
+      vue.createElementVNode("view", { class: "mt-5 text-grey" }, [
+        vue.createElementVNode(
+          "text",
+          { class: "reason_txt text-xsBlue" },
+          vue.toDisplayString($data.date) + "呼吸统计",
+          1
+          /* TEXT */
+        )
+      ]),
+      $data.isLoading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card"
+      }, [
+        vue.createVNode(_component_breathe_analysis, { breatheStop: $data.breatheStop }, null, 8, ["breatheStop"]),
+        vue.createVNode(_component_breathe_ahi, { ahi: $data.ahi }, null, 8, ["ahi"]),
+        vue.createCommentVNode(' <breathe_stop_time :breatheStopTime="breatheStopTime"></breathe_stop_time> '),
+        vue.createVNode(_component_breathe_sort, { breatheStopTime: $data.breatheStopTime }, null, 8, ["breatheStopTime"]),
+        vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis }, null, 8, ["diagnosis"])
+      ])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const PagesSleepPageBreathe_detailBreathe_detail = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/breathe_detail/breathe_detail.vue"]]);
+  const _sfc_main$d = {
+    components: {
+      card: __easycom_0$2,
+      pagination: __easycom_1$1
+    },
+    data() {
+      return {
+        isLoading: false,
+        startDate: "",
+        //默认起始时间  
+        endDate: "",
+        //默认结束时间 
+        colorNameArr: ["cyan", "blue", "red", "orange", "olive", "green", "purple", "mauve"],
+        aimDesc: [],
+        pageNum: 1,
+        // 当前页码
+        total: 0,
+        // 数据总数
+        pageSize: 8
+        // 每页显示条数
+      };
+    },
+    methods: {
+      handlePageChange(pageNum) {
+        this.pageNum = pageNum;
+        this.getReportPageInfo();
+      },
+      onStartDateChange(event) {
+        this.startDate = event.detail.value;
+      },
+      onEndDateChange(event) {
+        this.endDate = event.detail.value;
+      },
+      bindDateSearchTap() {
+        this.getReportPageInfo();
+      },
+      bindDateClearTap() {
+        this.startDate = "";
+        this.endDate = "";
+        this.getReportPageInfo();
+      },
+      // 得到分页信息
+      getReportPageInfo() {
+        let page = this.pageNum;
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/report/getStateByPage`,
+          data: {
+            page,
+            startDate: this.startDate,
+            endDate: this.endDate,
+            pageSize: this.pageSize
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resArr = res.data.content;
+          let reportArr = [];
+          for (var i2 = 0; i2 < resArr.length; i2++) {
+            let item = resArr[i2];
+            item.colorName = this.colorNameArr[i2];
+            item.title = "体位体动";
+            item.recordDate = formatTimestamp(item.startTime);
+            item.url = `/pages/sleep-page/sleep_position/sleep_position?reportId=${item.reportId}&date=${item.recordDate}`;
+            reportArr.push(item);
+          }
+          this.total = res.data.total;
+          this.isLoading = true;
+          this.aimDesc = reportArr;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad() {
+      this.getReportPageInfo();
+    }
+  };
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_card = resolveEasycom(vue.resolveDynamicComponent("card"), __easycom_0$2);
+    const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
+      vue.createElementVNode("view", { class: "head" }, [
+        vue.createElementVNode("view", { class: "top_bar bar search fixed flex-direction" }, [
+          vue.createElementVNode("view", {
+            class: "bar search bg-white",
+            style: { "width": "100%" }
+          }, [
+            vue.createElementVNode("view", { class: "search-date" }, [
+              vue.createElementVNode("view", { class: "date-group" }, [
+                vue.createElementVNode("picker", {
+                  onChange: _cache[0] || (_cache[0] = (...args) => $options.onStartDateChange && $options.onStartDateChange(...args)),
+                  mode: "date",
+                  value: $data.startDate
+                }, [
+                  vue.createElementVNode("view", { class: "picker" }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass(!$data.startDate ? "text-line1" : "text-line2")
+                      },
+                      vue.toDisplayString($data.startDate || "开始日期"),
+                      3
+                      /* TEXT, CLASS */
+                    )
+                  ])
+                ], 40, ["value"]),
+                vue.createElementVNode("text", { class: "text-line1" }, "~"),
+                vue.createElementVNode("picker", {
+                  onChange: _cache[1] || (_cache[1] = (...args) => $options.onEndDateChange && $options.onEndDateChange(...args)),
+                  mode: "date",
+                  value: $data.endDate
+                }, [
+                  vue.createElementVNode("view", { class: "picker" }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass(!$data.endDate ? "text-line1" : "text-line2")
+                      },
+                      vue.toDisplayString($data.endDate || "结束日期"),
+                      3
+                      /* TEXT, CLASS */
+                    )
+                  ])
+                ], 40, ["value"])
+              ]),
+              vue.createElementVNode("view", {
+                onClick: _cache[2] || (_cache[2] = (...args) => $options.bindDateSearchTap && $options.bindDateSearchTap(...args)),
+                class: "date-btn btn mid bg-gray margin-left-xs",
+                style: { "width": "130rpx" }
+              }, "搜索"),
+              vue.createElementVNode("view", {
+                onClick: _cache[3] || (_cache[3] = (...args) => $options.bindDateClearTap && $options.bindDateClearTap(...args)),
+                class: "date-btn btn mid bg-grey light margin-left-xs",
+                style: { "width": "130rpx" }
+              }, "清空")
+            ]),
+            vue.renderSlot(_ctx.$slots, "searchEnd")
+          ])
+        ])
+      ]),
+      $data.isLoading ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card-content"
+      }, [
+        vue.createElementVNode("view", { class: "load text-grey" }, "筛选结果如下所示，点击查看详情"),
+        vue.createElementVNode("view", { class: "card-list" }, [
+          vue.createVNode(_component_card, { aimDesc: $data.aimDesc }, null, 8, ["aimDesc"])
+        ]),
+        vue.createElementVNode("view", null, [
+          vue.createVNode(_component_pagination, {
+            total: $data.total,
+            pageSize: $data.pageSize,
+            pageNum: $data.pageNum,
+            onPageChange: $options.handlePageChange
+          }, null, 8, ["total", "pageSize", "pageNum", "onPageChange"])
+        ])
+      ])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const PagesSleepPageSleep_position_indexSleep_position_index = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/sleep_position_index/sleep_position_index.vue"]]);
+  const _sfc_main$c = {
     props: {
       proportionList: {
         type: Array,
@@ -76212,7 +77452,7 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "ec-container" }, [
       vue.createElementVNode("view", { class: "charts" }, [
@@ -76226,8 +77466,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const sleep_position_radar = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-972043b9"], ["__file", "E:/health/sleep-medical-uni/components/position/sleep_position_radar/sleep_position_radar.vue"]]);
-  const _sfc_main$a = {
+  const sleep_position_radar = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-972043b9"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/position/sleep_position_radar/sleep_position_radar.vue"]]);
+  const _sfc_main$b = {
     props: {
       positionTime: {
         type: Object,
@@ -76317,7 +77557,7 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "ec-container" }, [
       vue.createElementVNode("view", { class: "charts" }, [
@@ -76331,8 +77571,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const position_time_chart = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-aee32ad4"], ["__file", "E:/health/sleep-medical-uni/components/position/position_time_chart/position_time_chart.vue"]]);
-  const _sfc_main$9 = {
+  const position_time_chart = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-aee32ad4"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/position/position_time_chart/position_time_chart.vue"]]);
+  const _sfc_main$a = {
     props: {
       moveExtent: {
         type: Object,
@@ -76427,7 +77667,7 @@ if (uni.restoreGlobal) {
       this.init();
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "ec-container" }, [
       vue.createElementVNode("view", { class: "charts" }, [
@@ -76441,8 +77681,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const body_move_chart = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-84d83c61"], ["__file", "E:/health/sleep-medical-uni/components/position/body_move_chart/body_move_chart.vue"]]);
-  const _sfc_main$8 = {
+  const body_move_chart = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-84d83c61"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/position/body_move_chart/body_move_chart.vue"]]);
+  const _sfc_main$9 = {
     components: {
       sleep_position_radar,
       position_time_chart,
@@ -76484,13 +77724,13 @@ if (uni.restoreGlobal) {
         });
       }
     },
-    onLoad() {
-      this.reportId = this.$route.query.reportId;
-      this.date = this.$route.query.date;
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
       this.getPositionData();
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_sleep_position_radar = vue.resolveComponent("sleep_position_radar");
     const _component_position_time_chart = vue.resolveComponent("position_time_chart");
     const _component_body_move_chart = vue.resolveComponent("body_move_chart");
@@ -76516,8 +77756,8 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageSleep_positionSleep_position = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/sleep_position/sleep_position.vue"]]);
-  const _sfc_main$7 = {
+  const PagesSleepPageSleep_positionSleep_position = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/sleep_position/sleep_position.vue"]]);
+  const _sfc_main$8 = {
     components: {
       pagination: __easycom_1$1
     },
@@ -76599,7 +77839,7 @@ if (uni.restoreGlobal) {
       this.getReportPageInfo();
     }
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
       vue.createElementVNode("view", { class: "head" }, [
@@ -76708,8 +77948,8 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageMy_report_indexMy_report_index = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/my_report_index/my_report_index.vue"]]);
-  const _sfc_main$6 = {
+  const PagesSleepPageMy_report_indexMy_report_index = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/my_report_index/my_report_index.vue"]]);
+  const _sfc_main$7 = {
     name: "final_diagnosis",
     props: {
       diagnosis: {
@@ -76749,7 +77989,7 @@ if (uni.restoreGlobal) {
       this.dataProcess();
     }
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "content" }, [
       vue.createElementVNode("view", { class: "top" }, [
         vue.createElementVNode("text", { class: "topic" }, "患者经整夜呼吸睡眠发现:"),
@@ -76808,8 +78048,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-d2f4b55e"], ["__file", "E:/health/sleep-medical-uni/components/final_diagnosis/final_diagnosis.vue"]]);
-  const _sfc_main$5 = {
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-d2f4b55e"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/final_diagnosis/final_diagnosis.vue"]]);
+  const _sfc_main$6 = {
     props: {
       snoreInfo: {
         type: Object,
@@ -76846,13 +78086,13 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "ec-container" }, [
       vue.createElementVNode("text", { class: "text-style" }, "鼾声情况分析"),
       vue.createElementVNode("view", { class: "card-style" }, [
         vue.createElementVNode("view", {
           class: "ec-card",
-          style: { "margin-left": "75rpx" }
+          style: { "margin-left": "10%" }
         }, [
           vue.createElementVNode("view", null, [
             vue.createElementVNode("image", {
@@ -76909,7 +78149,7 @@ if (uni.restoreGlobal) {
         ]),
         vue.createElementVNode("view", {
           class: "ec-card",
-          style: { "margin-left": "75rpx" }
+          style: { "margin-left": "10%" }
         }, [
           vue.createElementVNode("view", null, [
             vue.createElementVNode("image", {
@@ -76967,8 +78207,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const snore_analysis_chart = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__scopeId", "data-v-033bb9e4"], ["__file", "E:/health/sleep-medical-uni/components/snore/snore_analysis_chart/snore_analysis_chart.vue"]]);
-  const _sfc_main$4 = {
+  const snore_analysis_chart = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-033bb9e4"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/snore/snore_analysis_chart/snore_analysis_chart.vue"]]);
+  const _sfc_main$5 = {
     props: {
       snoreTime: {
         type: Object,
@@ -77012,7 +78252,8 @@ if (uni.restoreGlobal) {
             title: {
               text: "鼾声分时图",
               left: "center",
-              top: "10"
+              top: "10",
+              padding: [0, 0, 0, 0]
             },
             tooltip: {
               trigger: "axis",
@@ -77022,11 +78263,11 @@ if (uni.restoreGlobal) {
               }
             },
             grid: {
-              left: "5%",
-              right: "4%",
+              left: "9%",
+              right: "9%",
               top: "1%",
               // 减少顶部边距值以使图表上移
-              bottom: "40%",
+              bottom: "30%",
               // 可以适当调整底部边距以改变图表整体高度
               containLabel: true
             },
@@ -77082,7 +78323,7 @@ if (uni.restoreGlobal) {
               type: "bar",
               data: data.map((val) => val * 0.5),
               // 假设您想要的高度是原来的一半
-              barWidth: "100%",
+              barWidth: "80%",
               // 设置柱子宽度，以填充时间间隔
               itemStyle: {
                 color: "#FBC295"
@@ -77098,7 +78339,7 @@ if (uni.restoreGlobal) {
         deep: true,
         handler() {
           this.init();
-          formatAppLog("log", "at components/snore/snore_time_chart/snore_time_chart.vue:145", this.snoreTime.snoreLabels);
+          formatAppLog("log", "at components/snore/snore_time_chart/snore_time_chart.vue:146", this.snoreTime.snoreLabels);
         }
       }
     },
@@ -77108,7 +78349,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_l_echart = resolveEasycom(vue.resolveDynamicComponent("l-echart"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "ec-container" }, [
       vue.createElementVNode("view", { class: "charts" }, [
@@ -77119,8 +78360,8 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const snore_time_chart = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__scopeId", "data-v-1c8f4b38"], ["__file", "E:/health/sleep-medical-uni/components/snore/snore_time_chart/snore_time_chart.vue"]]);
-  const _sfc_main$3 = {
+  const snore_time_chart = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__scopeId", "data-v-1c8f4b38"], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/components/snore/snore_time_chart/snore_time_chart.vue"]]);
+  const _sfc_main$4 = {
     components: {
       sleep_position_radar,
       position_time_chart,
@@ -77128,7 +78369,16 @@ if (uni.restoreGlobal) {
       body_move_chart,
       final_diagnosis: __easycom_1,
       snore_analysis_chart,
-      snore_time_chart
+      snore_time_chart,
+      sleep_analysis,
+      sleep_proportion,
+      sleep_time,
+      heart_rate_analysis,
+      heart_rate_period,
+      heart_rate_time,
+      breathe_ahi,
+      breathe_analysis,
+      breathe_stop_time
     },
     data() {
       return {
@@ -77142,9 +78392,27 @@ if (uni.restoreGlobal) {
         diagnosis_snore: {},
         snoreInfo: {},
         snoreTime: {},
+        diagnosis_state: {},
+        proportionList_state: [],
+        stateTime: {},
+        stateInfo: {},
+        diagnosis_heart: {},
+        overnightHeart: {},
+        awake: {},
+        deepSleep: {},
+        lightSleep: {},
+        rem: {},
+        heartTime: {},
+        isLoadingHeart: false,
+        isLoadingState: false,
         isLoadingPosition: false,
         isLoadingDiagnosis: false,
-        isLoadingSnore: false
+        isLoadingSnore: false,
+        diagnosis_breathe: {},
+        ahi: 0,
+        breatheStop: {},
+        breatheStopTime: {},
+        isLoadingBreathe: false
       };
     },
     methods: {
@@ -77209,20 +78477,101 @@ if (uni.restoreGlobal) {
         }).catch((err) => {
           showToast("请稍后重试！", 1500);
         });
+      },
+      getStateData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/state/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.proportionList_state = resData.proportionList;
+          this.stateInfo = resData.stateInfo;
+          this.stateTime = resData.stateTime;
+          this.diagnosis_state.msg = resData.evaluation;
+          this.diagnosis_state.title = "睡眠状态";
+          this.isLoadingState = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      },
+      getHeartData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/heart/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.overnightHeart = resData.overnightHeart;
+          this.awake = resData.awake;
+          this.deepSleep = resData.deepSleep;
+          this.lightSleep = resData.lightSleep;
+          this.rem = resData.rem;
+          this.heartTime = resData.heartTime;
+          this.diagnosis_heart.msg = resData.evaluation;
+          this.diagnosis_heart.title = "心率";
+          this.isLoadingHeart = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      },
+      getBreatheData() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/breathe/getData`,
+          data: {
+            reportId: this.reportId
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let resData = res.data;
+          this.ahi = resData.ahi;
+          this.breatheStop = resData.breatheStop;
+          this.breatheStopTime = resData.breatheStopTime;
+          this.diagnosis_breathe.msg = resData.evaluation;
+          this.diagnosis_breathe.title = "呼吸";
+          this.isLoadingBreathe = true;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
       }
     },
-    onLoad() {
-      this.reportId = this.$route.query.reportId;
-      this.date = this.$route.query.date;
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
       this.getPositionData();
       this.getDiagnosis();
       this.getSnoreData();
+      this.getStateData();
+      this.getHeartData();
+      this.getBreatheData();
     }
   };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_sleep_proportion = vue.resolveComponent("sleep_proportion");
+    const _component_sleep_analysis = vue.resolveComponent("sleep_analysis");
+    const _component_sleep_time = vue.resolveComponent("sleep_time");
+    const _component_evaluate_box = resolveEasycom(vue.resolveDynamicComponent("evaluate_box"), __easycom_0$1);
+    const _component_heart_rate_analysis = vue.resolveComponent("heart_rate_analysis");
+    const _component_heart_rate_period = vue.resolveComponent("heart_rate_period");
+    const _component_heart_rate_time = vue.resolveComponent("heart_rate_time");
+    const _component_breathe_analysis = vue.resolveComponent("breathe_analysis");
+    const _component_breathe_ahi = vue.resolveComponent("breathe_ahi");
+    const _component_breathe_stop_time = vue.resolveComponent("breathe_stop_time");
     const _component_snore_analysis_chart = vue.resolveComponent("snore_analysis_chart");
     const _component_snore_time_chart = vue.resolveComponent("snore_time_chart");
-    const _component_evaluate_box = resolveEasycom(vue.resolveDynamicComponent("evaluate_box"), __easycom_0$1);
     const _component_sleep_position_radar = vue.resolveComponent("sleep_position_radar");
     const _component_position_time_chart = vue.resolveComponent("position_time_chart");
     const _component_body_move_chart = vue.resolveComponent("body_move_chart");
@@ -77238,20 +78587,46 @@ if (uni.restoreGlobal) {
         )
       ]),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
-      vue.createElementVNode("view", { class: "card" }, [
-        vue.createElementVNode("view", { class: "load text-grey" }, "睡眠状态")
-      ]),
+      $data.isLoadingState ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "card"
+      }, [
+        vue.createElementVNode("view", { class: "load text-grey" }, "睡眠状态"),
+        vue.createVNode(_component_sleep_proportion, { proportionList: $data.proportionList_state }, null, 8, ["proportionList"]),
+        vue.createVNode(_component_sleep_analysis, { stateInfo: $data.stateInfo }, null, 8, ["stateInfo"]),
+        vue.createVNode(_component_sleep_time, { stateTime: $data.stateTime }, null, 8, ["stateTime"]),
+        vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis_state }, null, 8, ["diagnosis"])
+      ])) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
-      vue.createElementVNode("view", { class: "card" }, [
-        vue.createElementVNode("view", { class: "load text-grey" }, "心率")
-      ]),
+      $data.isLoadingHeart ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 1,
+        class: "card"
+      }, [
+        vue.createElementVNode("view", { class: "load text-grey" }, "心率"),
+        vue.createVNode(_component_heart_rate_analysis, { overnightHeart: $data.overnightHeart }, null, 8, ["overnightHeart"]),
+        vue.createVNode(_component_heart_rate_period, {
+          awake: $data.awake,
+          deepSleep: $data.deepSleep,
+          lightSleep: $data.lightSleep,
+          rem: $data.rem
+        }, null, 8, ["awake", "deepSleep", "lightSleep", "rem"]),
+        vue.createVNode(_component_heart_rate_time, { heartTime: $data.heartTime }, null, 8, ["heartTime"]),
+        vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis_heart }, null, 8, ["diagnosis"])
+      ])) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
-      vue.createElementVNode("view", { class: "card" }, [
-        vue.createElementVNode("view", { class: "load text-grey" }, "呼吸")
-      ]),
+      $data.isLoadingBreathe ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 2,
+        class: "card"
+      }, [
+        vue.createElementVNode("view", { class: "load text-grey" }, "呼吸"),
+        vue.createVNode(_component_breathe_analysis, { breatheStop: $data.breatheStop }, null, 8, ["breatheStop"]),
+        vue.createVNode(_component_breathe_ahi, { ahi: $data.ahi }, null, 8, ["ahi"]),
+        vue.createVNode(_component_breathe_stop_time, { breatheStopTime: $data.breatheStopTime }, null, 8, ["breatheStopTime"]),
+        vue.createVNode(_component_evaluate_box, { diagnosis: $data.diagnosis_breathe }, null, 8, ["diagnosis"])
+      ])) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
       $data.isLoadingSnore ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
+        key: 3,
         class: "card"
       }, [
         vue.createElementVNode("view", { class: "load text-grey" }, "鼾声"),
@@ -77261,7 +78636,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
       $data.isLoadingPosition ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 1,
+        key: 4,
         class: "card"
       }, [
         vue.createElementVNode("view", { class: "load text-grey" }, "体位体动"),
@@ -77272,7 +78647,7 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true),
       vue.createElementVNode("view", { class: "bt_dash_line" }),
       $data.isLoadingDiagnosis ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 2,
+        key: 5,
         class: "card"
       }, [
         vue.createElementVNode("view", { class: "load text-grey" }, "医生诊断意见"),
@@ -77280,8 +78655,8 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageMy_reportMy_report = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/my_report/my_report.vue"]]);
-  const _sfc_main$2 = {
+  const PagesSleepPageMy_reportMy_report = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/my_report/my_report.vue"]]);
+  const _sfc_main$3 = {
     components: {
       card: __easycom_0$2,
       pagination: __easycom_1$1
@@ -77360,7 +78735,7 @@ if (uni.restoreGlobal) {
       this.getReportPageInfo();
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_card = resolveEasycom(vue.resolveDynamicComponent("card"), __easycom_0$2);
     const _component_pagination = resolveEasycom(vue.resolveDynamicComponent("pagination"), __easycom_1$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
@@ -77442,8 +78817,8 @@ if (uni.restoreGlobal) {
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesSleepPageSnore_detail_indexSnore_detail_index = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/snore_detail_index/snore_detail_index.vue"]]);
-  const _sfc_main$1 = {
+  const PagesSleepPageSnore_detail_indexSnore_detail_index = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/snore_detail_index/snore_detail_index.vue"]]);
+  const _sfc_main$2 = {
     components: {
       snore_analysis_chart,
       snore_time_chart,
@@ -77481,13 +78856,13 @@ if (uni.restoreGlobal) {
         });
       }
     },
-    onLoad() {
-      this.reportId = this.$route.query.reportId;
-      this.date = this.$route.query.date;
+    onLoad(getData) {
+      this.reportId = getData.reportId;
+      this.date = getData.date;
       this.getSnoreData();
     }
   };
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_snore_analysis_chart = vue.resolveComponent("snore_analysis_chart");
     const _component_snore_time_chart = vue.resolveComponent("snore_time_chart");
     const _component_evaluate_box = resolveEasycom(vue.resolveDynamicComponent("evaluate_box"), __easycom_0$1);
@@ -77508,19 +78883,197 @@ if (uni.restoreGlobal) {
       ])
     ]);
   }
-  const PagesSleepPageSnore_detailSnore_detail = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/health/sleep-medical-uni/pages/sleep-page/snore_detail/snore_detail.vue"]]);
+  const PagesSleepPageSnore_detailSnore_detail = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/sleep-page/snore_detail/snore_detail.vue"]]);
+  const _sfc_main$1 = {
+    data() {
+      return {
+        nickname: "",
+        height: "",
+        weight: "",
+        date: "",
+        genderOptions: ["男", "女"],
+        genderIndex: -1,
+        sex: ""
+      };
+    },
+    methods: {
+      bindDateChange(event) {
+        this.date = event.detail.value;
+        formatAppLog("log", "at pages/editInfo/editInfo.vue:58", this.date);
+      },
+      bindGenderChange(event) {
+        const index = event.detail.value;
+        this.genderIndex = index;
+        this.sex = this.genderOptions[index];
+      },
+      updateProfile() {
+        let birthTime = new Date(this.date).getTime();
+        let obj = {
+          method: "POST",
+          showLoading: true,
+          url: `/user/updateUserInfo`,
+          data: {
+            name: this.nickname,
+            sex: this.sex,
+            birthTime,
+            weight: this.weight,
+            height: this.height
+          },
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          showToast("修改成功", 1500);
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      },
+      getUserInfo() {
+        let obj = {
+          method: "GET",
+          showLoading: true,
+          url: `/user/getUserInfo`,
+          data: {},
+          message: "正在获取数据"
+        };
+        request(obj).then((res) => {
+          let userInfo = res.data;
+          this.nickname = userInfo.name;
+          this.height = userInfo.height;
+          this.weight = userInfo.weight;
+          this.date = formatTimestamp_(userInfo.birthTime);
+          this.sex = userInfo.sex;
+        }).catch((err) => {
+          showToast("请稍后重试！", 1500);
+        });
+      }
+    },
+    onLoad() {
+      this.getUserInfo();
+    }
+  };
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "main" }, [
+      vue.createElementVNode("view", {
+        class: "form-box shadow-project card-project",
+        style: { "background-color": "aliceblue" }
+      }, [
+        vue.createElementVNode("view", { class: "form-group" }, [
+          vue.createElementVNode("view", { class: "title must" }, "姓名"),
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              type: "text",
+              placeholder: "填写您的姓名",
+              "placeholder-class": "phc",
+              maxlength: "10",
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.nickname = $event),
+              style: { "text-align": "right" }
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.nickname]
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "form-group" }, [
+          vue.createElementVNode("view", { class: "title must" }, "性别"),
+          vue.createElementVNode("picker", {
+            mode: "selector",
+            range: $data.genderOptions,
+            value: $data.genderIndex,
+            onChange: _cache[1] || (_cache[1] = (...args) => $options.bindGenderChange && $options.bindGenderChange(...args))
+          }, [
+            vue.createElementVNode(
+              "view",
+              { class: "picker" },
+              vue.toDisplayString($data.sex || "请选择性别"),
+              1
+              /* TEXT */
+            )
+          ], 40, ["range", "value"])
+        ]),
+        vue.createElementVNode("view", { class: "form-group" }, [
+          vue.createElementVNode("view", { class: "title must" }, "身高(cm)"),
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              type: "number",
+              placeholder: "填写您的身高(cm)",
+              "placeholder-class": "phc",
+              maxlength: "5",
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.height = $event),
+              style: { "text-align": "right" }
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.height]
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "form-group" }, [
+          vue.createElementVNode("view", { class: "title must" }, "体重(kg)"),
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              type: "number",
+              placeholder: "填写您的体重(kg)",
+              "placeholder-class": "phc",
+              maxlength: "5",
+              "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => $data.weight = $event),
+              style: { "text-align": "right" }
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.weight]
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "form-group" }, [
+          vue.createElementVNode("view", { class: "title must" }, "出生日期"),
+          vue.createElementVNode("picker", {
+            mode: "date",
+            start: "1900-01-01",
+            end: "2100-01-01",
+            value: $data.date,
+            onChange: _cache[4] || (_cache[4] = (...args) => $options.bindDateChange && $options.bindDateChange(...args))
+          }, [
+            vue.createElementVNode(
+              "view",
+              { class: "picker" },
+              vue.toDisplayString($data.date || "请选择出生日期"),
+              1
+              /* TEXT */
+            )
+          ], 40, ["value"])
+        ])
+      ]),
+      vue.createElementVNode("button", {
+        type: "primary",
+        size: "mini",
+        onClick: _cache[5] || (_cache[5] = (...args) => $options.updateProfile && $options.updateProfile(...args))
+      }, "保存信息")
+    ]);
+  }
+  const PagesEditInfoEditInfo = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/pages/editInfo/editInfo.vue"]]);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/device/device", PagesDeviceDevice);
   __definePage("pages/my/my", PagesMyMy);
   __definePage("pages/sleep-page/sleep_state_index/sleep_state_index", PagesSleepPageSleep_state_indexSleep_state_index);
   __definePage("pages/sleep-page/sleep_state/sleep_state", PagesSleepPageSleep_stateSleep_state);
   __definePage("pages/sleep-page/heart_rate_index/heart_rate_index", PagesSleepPageHeart_rate_indexHeart_rate_index);
+  __definePage("pages/sleep-page/heart_rate/heart_rate", PagesSleepPageHeart_rateHeart_rate);
+  __definePage("pages/sleep-page/breathe_detail_index/breathe_detail_index", PagesSleepPageBreathe_detail_indexBreathe_detail_index);
+  __definePage("pages/sleep-page/breathe_detail/breathe_detail", PagesSleepPageBreathe_detailBreathe_detail);
   __definePage("pages/sleep-page/sleep_position_index/sleep_position_index", PagesSleepPageSleep_position_indexSleep_position_index);
   __definePage("pages/sleep-page/sleep_position/sleep_position", PagesSleepPageSleep_positionSleep_position);
   __definePage("pages/sleep-page/my_report_index/my_report_index", PagesSleepPageMy_report_indexMy_report_index);
   __definePage("pages/sleep-page/my_report/my_report", PagesSleepPageMy_reportMy_report);
   __definePage("pages/sleep-page/snore_detail_index/snore_detail_index", PagesSleepPageSnore_detail_indexSnore_detail_index);
   __definePage("pages/sleep-page/snore_detail/snore_detail", PagesSleepPageSnore_detailSnore_detail);
+  __definePage("pages/editInfo/editInfo", PagesEditInfoEditInfo);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:4", "App Launch");
@@ -77532,7 +79085,7 @@ if (uni.restoreGlobal) {
       formatAppLog("log", "at App.vue:10", "App Hide");
     }
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "E:/health/sleep-medical-uni/App.vue"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "/Users/moshenlong/Documents/HBuilderProjects/sleep-medical-uni/App.vue"]]);
   function createApp() {
     const app = vue.createVueApp(App);
     return {
@@ -77547,4 +79100,4 @@ if (uni.restoreGlobal) {
   __app__._component.render = () => {
   };
   __app__.mount("#app");
-})(Vue, uni.VueShared);
+})(Vue);

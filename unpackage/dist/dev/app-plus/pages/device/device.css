@@ -31,7 +31,7 @@
 }
 .left-view[data-v-43a986d6] {
   position: relative;
-  height: 6.3125rem;
+  height: 4.6875rem;
   margin-top: 1.5625rem;
   padding: 0.625rem 0;
   flex: 1;
@@ -595,4 +595,7 @@
 }
 .device{
 	margin-top: 3.75rem
+}
+.addDevice{
+	width: 30%;
 }
