@@ -37,8 +37,8 @@ export const request = function(obj) {
         //添加请求头
         header: {
           'Content-Type': contentType ,
-          // 'token': wx.getStorageSync('token') //获取保存的token
-          'token':'eyJhbGciOiJIUzI1NiIsIlR5cGUiOiJKd3QiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3MTAwNjE4NTEsInVzZXJuYW1lIjoiMTM0Mzg2MjA3MzIifQ.P9SK2KIhN6ZmUiKTCWRAQlOl6SoYrKWnYpCpMcOGSVA'
+          'token': uni.getStorageSync('token') //获取保存的token
+          // 'token':'eyJhbGciOiJIUzI1NiIsIlR5cGUiOiJKd3QiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3MTAwNjE4NTEsInVzZXJuYW1lIjoiMTM0Mzg2MjA3MzIifQ.P9SK2KIhN6ZmUiKTCWRAQlOl6SoYrKWnYpCpMcOGSVA'
         },
         //请求成功
         success: function(res) {

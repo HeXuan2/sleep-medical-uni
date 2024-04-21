@@ -7,6 +7,14 @@
 			}
 		},
 		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "用户登录",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
 			"path": "pages/device/device",
 			"style": {
 				"navigationBarTitleText": "设备"

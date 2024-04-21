@@ -104,7 +104,14 @@
 							
 						}
 						if (idx == 1) {
-							
+							uni.removeStorageSync('token');
+							uni.removeStorageSync('isLogin');
+							uni.reLaunch({
+								url:"/pages/login/login"
+							})
+							uni.showToast({
+								title: '退出登录成功', icon: 'none'
+							})
 						}
 		
 					},
